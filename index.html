@@ -917,10 +917,14 @@
       font-size: 1.1rem;
     }
 
-    /* ========== STORY PHOTOS (KEN BURNS) ========== */
+    /* ========== STORY PHOTOS (FIXED: NO OVERLAYS, CAPTIONS VISIBLE) ========== */
     .story-photo {
       position: relative;
       overflow: hidden;
+      background-color: var(--wla-offwhite); /* fallback */
+    }
+    body.dark-mode .story-photo {
+      background-color: var(--wla-charcoal);
     }
     .story-photo[data-background] {
       background-size: cover !important;
@@ -929,33 +933,28 @@
     }
     @keyframes kenBurns {
       0% { transform: scale(1); }
-      100% { transform: scale(1.1); }
+      100% { transform: scale(1.05); } /* gentler zoom */
     }
     .story-caption {
       position: absolute;
-      bottom: 100px;
-      max-width: 650px;
-      padding: 2rem;
-      background: linear-gradient(90deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.8) 70%, transparent 100%);
-      backdrop-filter: blur(10px);
+      bottom: 40px; /* raised slightly */
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 800px;
+      padding: 1.5rem;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(5px);
       border-left: 4px solid var(--wla-coral);
+      border-radius: 0 8px 8px 0;
       animation: slideIn 0.5s ease;
-      z-index: 10;
+      z-index: 20;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
       color: var(--wla-charcoal);
     }
     body.dark-mode .story-caption {
-      background: linear-gradient(90deg, rgba(30,30,30,0.95) 0%, rgba(30,30,30,0.8) 70%, transparent 100%);
+      background: rgba(30,30,30,0.95);
       color: white;
-    }
-    .story-caption.left { left: 100px; }
-    .story-caption.right {
-      right: 100px;
-      border-left: none;
-      border-right: 4px solid var(--wla-coral);
-      background: linear-gradient(270deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.8) 70%, transparent 100%);
-    }
-    body.dark-mode .story-caption.right {
-      background: linear-gradient(270deg, rgba(30,30,30,0.95) 0%, rgba(30,30,30,0.8) 70%, transparent 100%);
     }
     .caption-number {
       color: var(--wla-coral);
@@ -965,27 +964,59 @@
       margin-bottom: 0.5rem;
     }
     .story-caption h2 {
-      font-size: 2.5rem;
+      font-size: 2.2rem;
       color: inherit;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
     }
     .story-caption p {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       font-family: var(--font-serif);
       font-style: italic;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
+      color: inherit;
     }
-    .caption-location {
+    .caption-context {
+      font-size: 0.95rem;
       color: var(--wla-teal);
-      font-size: 0.8rem;
-      text-transform: uppercase;
+      margin-top: 0.5rem;
     }
     @keyframes slideIn {
-      from { opacity: 0; transform: translateY(50px); }
-      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateX(-50%) translateY(30px); }
+      to { opacity: 1; transform: translateX(-50%) translateY(0); }
     }
     .caption-delay-1 { animation-delay: 0.2s; }
     .caption-delay-2 { animation-delay: 0.4s; }
+
+    /* ========== PHOTO ESSAY STRUCTURE SLIDE (NEW) ========== */
+    .structure-slide {
+      padding: 2rem;
+      text-align: center;
+    }
+    .structure-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 2rem auto;
+    }
+    .structure-item {
+      background: rgba(255,255,255,0.05);
+      padding: 1.5rem;
+      border-radius: 12px;
+      border: 1px solid rgba(241,97,96,0.3);
+    }
+    .structure-item h3 {
+      color: var(--wla-coral);
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .structure-item p {
+      color: var(--wla-teal);
+      font-size: 1rem;
+    }
+    body.dark-mode .structure-item p {
+      color: var(--wla-yellow);
+    }
 
     /* ========== DECONSTRUCT ========== */
     .deconstruct-slide { padding: 2rem; }
@@ -1593,12 +1624,12 @@
       .connection-arrow { transform: rotate(90deg); }
       .arc-visual { flex-direction: column; }
       .arc-line { width: 4px; height: 50px; }
-      .story-caption { max-width: 90%; }
-      .story-caption.left { left: 20px; }
-      .story-caption.right { right: 20px; }
+      .story-caption { max-width: 95%; bottom: 20px; }
+      .story-caption h2 { font-size: 1.8rem; }
       .mobile-nav { bottom: 20px; }
       .control-panel { bottom: 20px; right: 20px; }
       .progress-container { left: 20px; bottom: 20px; }
+      .structure-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (max-width: 480px) {
@@ -1608,7 +1639,7 @@
       .cover-host { font-size: 1.2rem; }
       .typographic-word { font-size: 4rem; }
       .quote-text { font-size: 2rem; }
-      .story-caption h2 { font-size: 1.8rem; }
+      .story-caption h2 { font-size: 1.5rem; }
       .story-caption p { font-size: 1rem; }
       .impact-number { font-size: 4rem; }
       .control-panel { bottom: 20px; right: 20px; }
@@ -1618,6 +1649,7 @@
       .cover-meta { flex-wrap: wrap; justify-content: center; }
       .cover-tags { justify-content: center; }
       .mobile-nav button { width: 56px; height: 56px; font-size: 1.5rem; }
+      .structure-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -1690,7 +1722,7 @@
   <!-- Progress -->
   <div class="progress-container">
     <div class="progress-track"><div class="progress-fill" id="progressBar"></div></div>
-    <div class="progress-counter" id="slideCounter">01 / 47</div>
+    <div class="progress-counter" id="slideCounter">01 / 48</div>
   </div>
 
   <!-- Help Overlay -->
@@ -1758,13 +1790,20 @@
         </div>
       </section>
 
-      <!-- SLIDE 3: What is a Photo Essay? -->
+      <!-- SLIDE 3: What is a Photo Essay? (improved) -->
       <section class="split-artistic pattern-subtle">
         <div class="artistic-grid">
           <div class="definition-panel">
             <div class="panel-label">Definition</div>
             <h2>What is a<br>Photo Essay?</h2>
-            <p class="definition-large">A narrative sequence that creates an emotional journey through images, weaving cultural context with visual poetry.</p>
+            <p class="definition-large">A photo essay is a sequence of photographs arranged to tell a story.</p>
+            <p>Good photo essays answer:</p>
+            <ul style="color: var(--wla-charcoal); margin-left: 1.5rem;">
+              <li>Who is involved?</li>
+              <li>What is happening?</li>
+              <li>Where does it take place?</li>
+              <li>Why does it matter?</li>
+            </ul>
             <div class="philosophy-quote">“A photo essay creates a series of emotions in the viewer”<cite>— Wikimedia Commons</cite></div>
           </div>
           <div class="visual-preview">
@@ -1819,43 +1858,57 @@
         <div class="scroll-hint"><svg width="40" height="40" viewBox="0 0 24 24"><path d="M12 5v14M8 15l4 4 4-4" stroke="currentColor" fill="none" stroke-width="2"/></svg></div>
       </section>
 
-      <!-- SLIDE 7: Rites Defined -->
+      <!-- SLIDE 7: Rites Defined (simplified) -->
       <section class="typographic-slide pattern-soft">
         <div class="typographic-container">
           <span class="typographic-label">Definition</span>
           <h1 class="typographic-word">Rites</h1>
-          <p class="typographic-definition">Formal, ceremonial acts tied to life transitions. Initiation, weddings, funerals.</p>
+          <p class="typographic-definition">A rite is an important cultural event or ceremony that marks a significant moment in life.</p>
+          <div class="ritual-example">Examples: weddings, initiations, funerals, graduations</div>
         </div>
       </section>
 
-      <!-- SLIDE 8: Rituals Defined -->
+      <!-- SLIDE 8: Rituals Defined (simplified) -->
       <section class="typographic-slide alt pattern-soft">
         <div class="typographic-container">
           <span class="typographic-label">Definition</span>
           <h1 class="typographic-word">Rituals</h1>
-          <p class="typographic-definition">Daily, seasonal, or lifecycle repeated practices that create meaning.</p>
-          <div class="ritual-example">“The barber shop is a daily grooming ritual”</div>
+          <p class="typographic-definition">Rituals are repeated actions or practices performed in meaningful ways.</p>
+          <div class="ritual-example">Examples: greeting elders, preparing food for ceremonies, daily grooming</div>
         </div>
       </section>
 
-      <!-- SLIDE 9: How Rites and Rituals Connect -->
+      <!-- SLIDE 9: How Rites and Rituals Connect (improved) -->
       <section class="connection-slide">
         <h2 class="connection-title">The Connection</h2>
         <div class="connection-grid">
           <div class="connection-item">
             <h3>Rites</h3>
-            <p>One‑time, formal ceremonies marking life changes.</p>
+            <p>Important events marking life transitions.</p>
           </div>
           <div class="connection-arrow">⇄</div>
           <div class="connection-item">
             <h3>Rituals</h3>
-            <p>Recurring practices that reinforce community and identity.</p>
+            <p>Repeated actions that give meaning to those events.</p>
           </div>
         </div>
-        <p class="connection-note">Rites are anchored by rituals; rituals give meaning to rites. Together they weave the fabric of culture.</p>
+        <p class="connection-note">Example: A wedding (rite) includes exchanging rings, dancing, and blessings (rituals). Documenting rituals helps viewers understand rites.</p>
       </section>
 
-      <!-- SLIDE 10: Community Voices -->
+      <!-- SLIDE 10: Photo Essay Structure (new) -->
+      <section class="structure-slide">
+        <h2>Photo Essay Structure</h2>
+        <div class="structure-grid">
+          <div class="structure-item"><h3>1. Establishing Shot</h3><p>Shows the location or environment</p></div>
+          <div class="structure-item"><h3>2. Characters</h3><p>Introduces the people involved</p></div>
+          <div class="structure-item"><h3>3. The Process</h3><p>Shows actions step by step</p></div>
+          <div class="structure-item"><h3>4. Details</h3><p>Close-up shots that add depth</p></div>
+          <div class="structure-item"><h3>5. Key Moment</h3><p>The most important moment</p></div>
+          <div class="structure-item"><h3>6. Closing Image</h3><p>Shows the result or transformation</p></div>
+        </div>
+      </section>
+
+      <!-- SLIDE 11: Community Voices -->
       <section class="cinematic-portrait" data-background="images/portraits/elder.jpg" data-background-opacity="0.4">
         <div class="portrait-quote">
           <div class="quote-symbol">“</div>
@@ -1865,7 +1918,7 @@
         <div class="portrait-overlay"></div>
       </section>
 
-      <!-- SLIDE 11: Barber Shop Intro -->
+      <!-- SLIDE 12: Barber Shop Intro -->
       <section class="film-strip-intro pattern-subtle">
         <h2 class="film-title">The Barber Shop</h2>
         <h3 class="film-subtitle">A Ugandan Grooming Ritual</h3>
@@ -1880,94 +1933,96 @@
         </div>
       </section>
 
-      <!-- SLIDES 12-23: Barber Story (12 slides) - detailed captions -->
+      <!-- SLIDES 13-24: Barber Story (12 slides) - rewritten with clear, factual captions -->
       <section class="story-photo ken-burns" data-background="images/barber-story/01-establishing.jpg">
-        <div class="story-caption left caption-delay-1">
+        <div class="story-caption">
           <span class="caption-number">01/12</span>
-          <h2>First Light on K'sala Lane</h2>
-          <p>The sun spills gold over corrugated iron, casting long shadows through the open shutters. Inside, the smell of antiseptic and old leather mingles with the promise of a new day. Musa, the barber, arranges his combs and scissors with the quiet ritual of a priest preparing for service. This shop, open since 1983, has seen generations pass through its doors. A new day of stories waits.</p>
-          <span class="caption-location">Kampala, Uganda · January 2026</span>
+          <h2>Opening the Shop</h2>
+          <p>The barber prepares his tools before the first customers arrive.</p>
+          <div class="caption-context">Barber shops often begin the day by cleaning equipment and arranging chairs.</div>
         </div>
       </section>
       <section class="story-photo ken-burns" data-background="images/barber-story/02-arrival.jpg">
-        <div class="story-caption right caption-delay-2">
+        <div class="story-caption">
           <span class="caption-number">02/12</span>
-          <h2>The Greeting: A Ritual of Respect</h2>
-          <p>A firm handshake, a smile that reaches the eyes. "Wasuze otya nno" — "How did you sleep?" In Uganda, the transaction of a haircut begins not with the blade, but with the heart. This greeting is a recognition of shared humanity, a moment to ask about family, about work, before the serious business of grooming begins. It is the foundation of trust.</p>
+          <h2>Greeting the Customer</h2>
+          <p>A customer greets the barber before sitting in the chair.</p>
+          <div class="caption-context">Greeting is an important sign of respect in many barber shops.</div>
         </div>
       </section>
       <section class="story-photo ken-burns" data-background="images/barber-story/03-waiting-area.jpg">
-        <div class="story-caption left caption-delay-1">
+        <div class="story-caption">
           <span class="caption-number">03/12</span>
-          <h2>The Parliament of Plastic Chairs</h2>
-          <p>The waiting area is the soul of the shop. Scattered newspapers, a radio murmuring news from the capital, plastic chairs warmed by bodies. Here, village gossip meets city politics. A farmer discusses rainfall with a schoolteacher; a boda-boda driver argues about football. The waiting is not passive—it is a vital part of the communal ritual, a space where stories are exchanged and community is woven.</p>
+          <h2>Waiting for a Turn</h2>
+          <p>Customers wait and talk while the barber finishes the previous haircut.</p>
+          <div class="caption-context">Barber shops often function as informal community gathering spaces.</div>
         </div>
       </section>
       <section class="story-photo ken-burns" data-background="images/barber-story/04-tool-preparation.jpg">
-        <div class="story-caption right caption-delay-2">
+        <div class="story-caption">
           <span class="caption-number">04/12</span>
-          <h2>The Barber's Armoury: Tools of the Trade</h2>
-          <p>Clippers hum, their oiled teeth gleaming under the single bulb. Scissors, sharpened to a whisper, lie in a neat row. Musa lays out his tools with the reverence of a surgeon. Each instrument has its purpose, its history. The metal clippers were his father's; the leather strop for the straight razor was a gift from a grateful customer. This preparation is a silent, focused meditation before the work begins.</p>
+          <h2>Preparing the Tools</h2>
+          <p>The barber checks the clippers and scissors before starting the haircut.</p>
         </div>
       </section>
       <section class="story-photo ken-burns" data-background="images/barber-story/05-cloth-placement.jpg">
-        <div class="story-caption left caption-delay-1">
+        <div class="story-caption">
           <span class="caption-number">05/12</span>
-          <h2>The Cloth of Trust: A Moment of Surrender</h2>
-          <p>The striped cloth is unfurled with a snap and wrapped securely around the neck. It is a barrier between the outside world and this intimate moment. The client, a young man named Kato, closes his eyes for a second, a small but profound act of surrender. He is placing his trust in Musa's hands, a trust built over years of quiet conversation and precise cuts.</p>
+          <h2>The Protective Cloth</h2>
+          <p>A cloth is placed around the customer's shoulders to keep hair from falling on clothing.</p>
         </div>
       </section>
       <section class="story-photo ken-burns" data-background="images/barber-story/06-haircut-action.jpg">
-        <div class="story-caption right caption-delay-2">
+        <div class="story-caption">
           <span class="caption-number">06/12</span>
-          <h2>The Rhythm of Scissors and Time</h2>
-          <p>Snip-snip-snip. The scissors dance, a rhythmic, hypnotic conversation between hand and hair. Musa’s wrist flicks with the economy of motion that only comes from decades of practice. He works by feel, by sound, his eyes focused on the shape emerging from the chaos. The shop falls into a comfortable silence, broken only by the metallic rhythm of the blades and the occasional murmur from the radio.</p>
+          <h2>Beginning the Haircut</h2>
+          <p>The barber begins trimming the hair using electric clippers.</p>
         </div>
       </section>
       <section class="story-photo ken-burns" data-background="images/barber-story/07-detail-focus.jpg">
-        <div class="story-caption left caption-delay-1">
+        <div class="story-caption">
           <span class="caption-number">07/12</span>
-          <h2>The Edge: A Whisper Against Skin</h2>
-          <p>A razor’s edge, fresh from the strop, traces the hairline. It is a whisper against the skin, a line drawn with absolute precision. The sideburns are squared, the neckline cleaned. It is in these fine lines that a barber's pride is truly taken. A millimeter off, and the entire cut is compromised. Kato holds his breath, trusting completely.</p>
+          <h2>Careful Shaping</h2>
+          <p>Small scissors are used to refine the shape around the ears.</p>
         </div>
       </section>
       <section class="story-photo ken-burns" data-background="images/barber-story/08-shaving.jpg">
-        <div class="story-caption right caption-delay-2">
+        <div class="story-caption">
           <span class="caption-number">08/12</span>
-          <h2>The Lather: A Tradition Passed Down</h2>
-          <p>Warm foam, whipped to a thick peak with a badger-hair brush, carries the scent of sandalwood. The straight razor, a tool of tempered steel, glides through the lather in long, sure strokes. This is a tradition whispered down from grandfathers, a connection to a time when a shave was not a rushed chore but a moment of dedicated self-care. The client's jaw relaxes under the soothing heat.</p>
+          <h2>Conversation</h2>
+          <p>Customers and the barber continue talking during the haircut.</p>
         </div>
       </section>
       <section class="story-photo ken-burns" data-background="images/barber-story/09-hot-towel.jpg">
-        <div class="story-caption left caption-delay-1">
+        <div class="story-caption">
           <span class="caption-number">09/12</span>
-          <h2>The Steam: A Pause in Time</h2>
-          <p>A hot towel, fragrant with eucalyptus and wrung out until it steams, is laid gently over the freshly shaven face. For a minute, the world dissolves into pure warmth and scent. The sounds of the street fade. Kato's thoughts drift. This is the moment of deepest relaxation, a sensory reset before the final reveal. Musa waits, letting the steam do its work.</p>
+          <h2>Checking the Mirror</h2>
+          <p>The customer checks the haircut in the mirror.</p>
         </div>
       </section>
       <section class="story-photo ken-burns" data-background="images/barber-story/10-aftershave.jpg">
-        <div class="story-caption right caption-delay-2">
+        <div class="story-caption">
           <span class="caption-number">10/12</span>
-          <h2>The Scent of Departure: Marking Completion</h2>
-          <p>A splash of menthol aftershave, cold and sharp, brings a gasp and a wide-eyed smile. A touch of shea butter oil is worked into the skin and hair. The scent of departure—clean, fresh, confident—fills the small space. The transformation is almost complete. Kato's reflection in the small mirror shows a man on the verge of stepping back into the world, renewed.</p>
+          <h2>Final Touches</h2>
+          <p>Loose hair is brushed away from the neck and face.</p>
         </div>
       </section>
       <section class="story-photo ken-burns" data-background="images/barber-story/11-mirror-moment.jpg">
-        <div class="story-caption left caption-delay-1">
+        <div class="story-caption">
           <span class="caption-number">11/12</span>
-          <h2>The Verdict: Seeing Oneself Anew</h2>
-          <p>The hand mirror is held up, angled to show the back, the sides, the careful work around the ears. A slow nod, a slight smile of approval. Kato sees himself not just as he was, but as he hoped to look. It is a moment of quiet pride, a silent acknowledgment of a job well done. He meets Musa's eyes in the reflection, a wordless thank you passing between them.</p>
+          <h2>Payment</h2>
+          <p>The customer pays for the haircut before leaving.</p>
         </div>
       </section>
       <section class="story-photo ken-burns" data-background="images/barber-story/12-departure.jpg">
-        <div class="story-caption right caption-delay-2">
+        <div class="story-caption">
           <span class="caption-number">12/12</span>
-          <h2>The Farewell: Until the Next Time</h2>
-          <p>Coins exchange hands, a final joke is shared about the state of the local football team. The door jingles shut behind Kato as he steps out, transformed, into the bright afternoon. Musa turns back to his chair, pulling the striped cloth from its back with a flick. He sweeps the dark hair from the floor, a small pile of evidence of the morning's work, and prepares the space for the next arrival. The cycle continues, as it has for over forty years.</p>
+          <h2>Leaving the Shop</h2>
+          <p>The customer leaves with a fresh haircut, completing the grooming ritual.</p>
         </div>
       </section>
 
-      <!-- SLIDE 24: Deconstructing the Story -->
+      <!-- SLIDE 25: Deconstructing the Story -->
       <section class="deconstruct-slide">
         <h2 class="section-title">Deconstructing the Story</h2>
         <div class="acts-container">
@@ -1980,7 +2035,7 @@
         <div class="shot-breakdown"><span>Establishing</span><span>Portrait</span><span>Action</span><span>Detail</span><span>Closing</span></div>
       </section>
 
-      <!-- SLIDE 25: What Makes a Great Photo Essay? -->
+      <!-- SLIDE 26: What Makes a Great Photo Essay? -->
       <section class="list-slide">
         <h2>What Makes a Great Photo Essay?</h2>
         <ul class="elegant-list">
@@ -1992,7 +2047,7 @@
         </ul>
       </section>
 
-      <!-- SLIDE 26: Types of Photo Essays -->
+      <!-- SLIDE 27: Types of Photo Essays -->
       <section class="types-slide">
         <h2>Types of Photo Essays</h2>
         <div class="types-wall">
@@ -2004,7 +2059,7 @@
         </div>
       </section>
 
-      <!-- SLIDE 27: The Narrative Arc -->
+      <!-- SLIDE 28: The Narrative Arc -->
       <section class="arc-slide">
         <h2>The Narrative Arc</h2>
         <div class="arc-visual">
@@ -2020,17 +2075,17 @@
         </div>
       </section>
 
-      <!-- SLIDE 28: Caption Writing -->
+      <!-- SLIDE 29: Caption Writing -->
       <section class="caption-masterclass">
         <h2>Caption Writing</h2>
         <div class="caption-comparison">
           <div class="bad-caption"><div class="caption-badge">✕ Poor</div><p>"A man getting a haircut"</p></div>
-          <div class="good-caption"><div class="caption-badge">✓ Excellent</div><p>"James receives his weekly haircut from Musa, who has been the neighborhood barber for 22 years. The ritual includes hot towel treatment and conversation about local news."</p></div>
+          <div class="good-caption"><div class="caption-badge">✓ Excellent</div><p>"A barber trims a customer's hair in Kampala, Uganda. Barber shops serve as social spaces where community news is shared."</p></div>
         </div>
         <div class="caption-formula"><span>WHO</span> + <span>WHAT</span> + <span>WHERE</span> + <span>WHEN</span> + <span>WHY</span> + <span>CONTEXT</span></div>
       </section>
 
-      <!-- SLIDE 29: Photography Techniques -->
+      <!-- SLIDE 30: Photography Techniques -->
       <section class="techniques-slide">
         <h2>Photography Techniques</h2>
         <div class="techniques-grid">
@@ -2040,21 +2095,21 @@
         </div>
       </section>
 
-      <!-- SLIDE 30: Ethics & Permission -->
+      <!-- SLIDE 31: Ethics & Permission -->
       <section class="ethics-slide">
         <div class="ethics-banner">⚡ ALWAYS ASK PERMISSION ⚡</div>
         <div class="ethics-speech">“I'm documenting this ritual for Wikimedia Commons, a free educational archive. May I photograph and share this with proper credit?”</div>
         <div class="ethics-note">Some moments aren't for photographing. Respect that.</div>
       </section>
 
-      <!-- SLIDE 31: Welcome to Commons -->
+      <!-- SLIDE 32: Welcome to Commons -->
       <section class="commons-intro">
         <h2>Wikimedia Commons</h2>
         <div class="commons-stat">80+ million free media files</div>
         <p class="commons-license">CC-BY-SA · Your photos will educate the world</p>
       </section>
 
-      <!-- SLIDE 32: File Naming -->
+      <!-- SLIDE 33: File Naming -->
       <section class="naming-slide">
         <h2>File Naming is Critical</h2>
         <div class="naming-correct"><div class="naming-label">✓ CORRECT</div><code>"Ritual_Uganda_01.jpg"</code><code>"Ritual_Uganda_02.jpg"</code><code>"Ritual_Uganda_03.jpg"</code></div>
@@ -2062,13 +2117,13 @@
         <div class="naming-highlight">NUMBER YOUR PHOTOS IN ORDER</div>
       </section>
 
-      <!-- SLIDE 33: File Requirements -->
+      <!-- SLIDE 34: File Requirements -->
       <section class="requirements-slide">
         <h2>File Requirements</h2>
         <ul><li>📷 Format: JPG or GIF only</li><li>⚖️ Minimum 2MB, clear and focused</li><li>🚫 No watermarks or logos</li><li>📊 Keep camera metadata intact</li></ul>
       </section>
 
-      <!-- SLIDE 34: Step 1 - Create Account -->
+      <!-- SLIDE 35: Step 1 - Create Account -->
       <section class="tutorial-step">
         <h2>Step 1: Create Account</h2>
         <div class="step-visual">
@@ -2078,7 +2133,7 @@
         </div>
       </section>
 
-      <!-- SLIDE 35: Step 2 - Upload Wizard -->
+      <!-- SLIDE 36: Step 2 - Upload Wizard -->
       <section class="tutorial-step">
         <h2>Step 2: Upload Wizard</h2>
         <div class="step-visual">
@@ -2088,19 +2143,19 @@
         </div>
       </section>
 
-      <!-- SLIDE 36: Step 3 - Add Descriptions -->
+      <!-- SLIDE 37: Step 3 - Add Descriptions -->
       <section class="tutorial-step">
         <h2>Step 3: Add Descriptions</h2>
         <div class="step-visual">
-          <div><strong>Title:</strong> "Ritual Name, Location - Photo 01"</div>
-          <div><strong>Description:</strong> Who, What, Where, When, Why</div>
-          <div><strong>Date:</strong> When photographed</div>
-          <div><strong>Categories:</strong> Wiki Loves Africa 2026, Rites and Rituals, Uganda</div>
+          <div><strong>Title:</strong> "Barber preparing tools, Kampala, Uganda"</div>
+          <div><strong>Description:</strong> A barber checks his clippers and scissors before the first customer arrives. Barber shops are spaces for grooming and community conversation.</div>
+          <div><strong>Date:</strong> 2026-01-15</div>
+          <div><strong>Categories:</strong> Wiki Loves Africa 2026, Rites and Rituals, Uganda, Barbers</div>
           <div class="screenshot-placeholder">[ SCREENSHOT: Description fields ]</div>
         </div>
       </section>
 
-      <!-- SLIDE 37: Step 4 - Create Your Photo Essay -->
+      <!-- SLIDE 38: Step 4 - Create Your Photo Essay -->
       <section class="organize-slide">
         <h2>Step 4: Create Your Photo Essay</h2>
         <div class="options-grid">
@@ -2111,14 +2166,14 @@
           </div>
           <div class="option-card">
             <h3>Option B: From Main Contest Page</h3>
-            <p>On the main page, look for "click here" under photo essay – as of early March, the link may not be active yet. Use the direct link above.</p>
+            <p>On the main page, look for "click here" under photo essay.</p>
           </div>
         </div>
         <div class="important-note">All photos must be uploaded INDIVIDUALLY first</div>
         <div class="screenshot-placeholder" style="max-width: 600px; margin: 2rem auto 0;">[ SCREENSHOT: Photo essay creation interface ]</div>
       </section>
 
-      <!-- SLIDE 38: Real Examples from Commons -->
+      <!-- SLIDE 39: Real Examples from Commons -->
       <section class="examples-slide">
         <h2>Real Examples from Commons</h2>
         <div class="examples-showcase">
@@ -2128,28 +2183,28 @@
         <div class="example-highlights"><span>📸 5-15 photos</span><span>📝 Captions</span><span>🏷️ Sequential</span></div>
       </section>
 
-      <!-- SLIDE 39: Contest Timeline -->
+      <!-- SLIDE 40: Contest Timeline -->
       <section class="timeline-slide"><h2>Contest Timeline</h2><div class="timeline-bar"><div class="timeline-marker"><span class="marker-date">March 1, 2026</span></div><div class="timeline-line"></div><div class="timeline-marker"><span class="marker-date">April 30, 2026</span></div></div><p class="timeline-note">Submit your photo essay before midnight UTC</p></section>
 
-      <!-- SLIDE 40: Prizes -->
+      <!-- SLIDE 41: Prizes -->
       <section class="prizes-slide"><h2>2026 Prizes</h2><div class="prizes"><div class="prize-category"><h3>Photography</h3><div>1st: <span>USD 900</span></div><div>2nd: <span>USD 700</span></div><div>3rd: <span>USD 600</span></div><div>Regional: <span>USD 1,000</span></div></div><div class="prize-category"><h3>Media</h3><div>Photo Essays: <span>USD 300</span></div><div>Best Audio: <span>USD 700</span></div><div>Narrative Video: <span>USD 900</span></div><div>Reportage Video: <span>USD 900</span></div><div>Clip Video: <span>USD 200</span></div></div></div></section>
 
-      <!-- SLIDE 41: Judging Criteria -->
+      <!-- SLIDE 42: Judging Criteria -->
       <section class="criteria-slide"><h2>Judging Criteria</h2><div class="criteria"><div>Technical Quality <span>20%</span></div><div>Storytelling <span>30%</span></div><div>Cultural Significance <span>25%</span></div><div>Caption Quality <span>15%</span></div><div>Theme Adherence <span>10%</span></div></div><p class="criteria-note">Photo essays judged as a complete narrative</p></section>
 
-      <!-- SLIDE 42: Your Mission -->
+      <!-- SLIDE 43: Your Mission -->
       <section class="mission-slide"><h2>Your Mission</h2><div class="mission"><div>📸 5-12 photos minimum</div><div>📝 Captions for EACH photo</div><div>🏷️ Sequential naming</div><div>📤 Upload to Commons</div><div>🔗 Create essay via direct link</div></div><div class="deadline">Deadline: April 30, 2026</div></section>
 
-      <!-- SLIDE 43: Uganda Resources -->
+      <!-- SLIDE 44: Uganda Resources -->
       <section class="resources-slide"><h2>Uganda Resources</h2><div class="resources"><div>📱 Telegram Group</div><div>📧 alvinategyeka@gmail.com</div><div>🌍 Imbalu, Weddings, Funerals</div><div>🎥 Next Workshop: March 15</div></div><p class="contact">Join the Uganda WLA community!</p></section>
 
-      <!-- SLIDE 44: Q&A -->
+      <!-- SLIDE 45: Q&A -->
       <section class="qa-slide"><div class="qa-icon">?</div><h2>Questions?</h2><div class="qa-contact">alvinategyeka@gmail.com</div><div class="qa-hashtags">#WikiLovesAfrica #RitesAndRituals #Uganda</div></section>
 
-      <!-- SLIDE 45: Thank You -->
+      <!-- SLIDE 46: Thank You -->
       <section class="thankyou-slide"><h1 class="thankyou-title">Asante Sana</h1><p class="thankyou-message">Your stories preserve our culture</p><div class="thankyou-divider"></div><p class="thankyou-call">Now go tell your story</p></section>
 
-      <!-- SLIDE 46: FINAL RESOURCES - ALL LINKS -->
+      <!-- SLIDE 47: FINAL RESOURCES - ALL LINKS -->
       <section class="final-resources-slide">
         <h2 class="final-resources-title">Key Resources</h2>
         <div class="final-resources-grid">
@@ -2457,7 +2512,7 @@
       // Slide animations
       Reveal.addEventListener('slidechanged', function(e) {
         const slide = e.currentSlide;
-        const els = slide.querySelectorAll('h1, h2, h3, p, .meta-item, .gallery-item, .minimal-card, .technique, .act, .theme-circle, .film-frame, .story-caption, .quote-text, .impact-number, .connection-item, .screenshot-placeholder, .final-resource-card');
+        const els = slide.querySelectorAll('h1, h2, h3, p, .meta-item, .gallery-item, .minimal-card, .technique, .act, .theme-circle, .film-frame, .story-caption, .quote-text, .impact-number, .connection-item, .screenshot-placeholder, .final-resource-card, .structure-item');
         els.forEach((el, i) => {
           el.style.opacity = '0';
           el.style.transform = 'translateY(20px)';
@@ -2469,7 +2524,7 @@
         });
       });
 
-      console.log('%c🎬 WLA 2026 - Mobile Ready', 'color:#f16160;font-size:16px;');
+      console.log('%c🎬 WLA 2026 - Content Improved', 'color:#f16160;font-size:16px;');
       showNotification('Welcome to the session!', '👋');
     })();
   </script>
