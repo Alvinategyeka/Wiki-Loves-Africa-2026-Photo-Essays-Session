@@ -917,14 +917,10 @@
       font-size: 1.1rem;
     }
 
-    /* ========== STORY PHOTOS (FIXED: NO OVERLAYS, CAPTIONS VISIBLE) ========== */
+    /* ========== STORY PHOTOS (KEN BURNS) ========== */
     .story-photo {
       position: relative;
       overflow: hidden;
-      background-color: var(--wla-offwhite); /* fallback */
-    }
-    body.dark-mode .story-photo {
-      background-color: var(--wla-charcoal);
     }
     .story-photo[data-background] {
       background-size: cover !important;
@@ -933,28 +929,33 @@
     }
     @keyframes kenBurns {
       0% { transform: scale(1); }
-      100% { transform: scale(1.05); } /* gentler zoom */
+      100% { transform: scale(1.1); }
     }
     .story-caption {
       position: absolute;
-      bottom: 40px; /* raised slightly */
-      left: 50%;
-      transform: translateX(-50%);
-      width: 90%;
-      max-width: 800px;
-      padding: 1.5rem;
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(5px);
+      bottom: 100px;
+      max-width: 650px;
+      padding: 2rem;
+      background: linear-gradient(90deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.8) 70%, transparent 100%);
+      backdrop-filter: blur(10px);
       border-left: 4px solid var(--wla-coral);
-      border-radius: 0 8px 8px 0;
       animation: slideIn 0.5s ease;
-      z-index: 20;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      z-index: 10;
       color: var(--wla-charcoal);
     }
     body.dark-mode .story-caption {
-      background: rgba(30,30,30,0.95);
+      background: linear-gradient(90deg, rgba(30,30,30,0.95) 0%, rgba(30,30,30,0.8) 70%, transparent 100%);
       color: white;
+    }
+    .story-caption.left { left: 100px; }
+    .story-caption.right {
+      right: 100px;
+      border-left: none;
+      border-right: 4px solid var(--wla-coral);
+      background: linear-gradient(270deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.8) 70%, transparent 100%);
+    }
+    body.dark-mode .story-caption.right {
+      background: linear-gradient(270deg, rgba(30,30,30,0.95) 0%, rgba(30,30,30,0.8) 70%, transparent 100%);
     }
     .caption-number {
       color: var(--wla-coral);
@@ -964,59 +965,27 @@
       margin-bottom: 0.5rem;
     }
     .story-caption h2 {
-      font-size: 2.2rem;
+      font-size: 2.5rem;
       color: inherit;
-      margin-bottom: 0.5rem;
+      margin-bottom: 1rem;
     }
     .story-caption p {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       font-family: var(--font-serif);
       font-style: italic;
-      margin-bottom: 0.5rem;
-      color: inherit;
+      margin-bottom: 1rem;
     }
-    .caption-context {
-      font-size: 0.95rem;
+    .caption-location {
       color: var(--wla-teal);
-      margin-top: 0.5rem;
+      font-size: 0.8rem;
+      text-transform: uppercase;
     }
     @keyframes slideIn {
-      from { opacity: 0; transform: translateX(-50%) translateY(30px); }
-      to { opacity: 1; transform: translateX(-50%) translateY(0); }
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     .caption-delay-1 { animation-delay: 0.2s; }
     .caption-delay-2 { animation-delay: 0.4s; }
-
-    /* ========== PHOTO ESSAY STRUCTURE SLIDE (NEW) ========== */
-    .structure-slide {
-      padding: 2rem;
-      text-align: center;
-    }
-    .structure-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-      max-width: 1000px;
-      margin: 2rem auto;
-    }
-    .structure-item {
-      background: rgba(255,255,255,0.05);
-      padding: 1.5rem;
-      border-radius: 12px;
-      border: 1px solid rgba(241,97,96,0.3);
-    }
-    .structure-item h3 {
-      color: var(--wla-coral);
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-    }
-    .structure-item p {
-      color: var(--wla-teal);
-      font-size: 1rem;
-    }
-    body.dark-mode .structure-item p {
-      color: var(--wla-yellow);
-    }
 
     /* ========== DECONSTRUCT ========== */
     .deconstruct-slide { padding: 2rem; }
@@ -1624,12 +1593,12 @@
       .connection-arrow { transform: rotate(90deg); }
       .arc-visual { flex-direction: column; }
       .arc-line { width: 4px; height: 50px; }
-      .story-caption { max-width: 95%; bottom: 20px; }
-      .story-caption h2 { font-size: 1.8rem; }
+      .story-caption { max-width: 90%; }
+      .story-caption.left { left: 20px; }
+      .story-caption.right { right: 20px; }
       .mobile-nav { bottom: 20px; }
       .control-panel { bottom: 20px; right: 20px; }
       .progress-container { left: 20px; bottom: 20px; }
-      .structure-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (max-width: 480px) {
@@ -1639,7 +1608,7 @@
       .cover-host { font-size: 1.2rem; }
       .typographic-word { font-size: 4rem; }
       .quote-text { font-size: 2rem; }
-      .story-caption h2 { font-size: 1.5rem; }
+      .story-caption h2 { font-size: 1.8rem; }
       .story-caption p { font-size: 1rem; }
       .impact-number { font-size: 4rem; }
       .control-panel { bottom: 20px; right: 20px; }
@@ -1649,7 +1618,6 @@
       .cover-meta { flex-wrap: wrap; justify-content: center; }
       .cover-tags { justify-content: center; }
       .mobile-nav button { width: 56px; height: 56px; font-size: 1.5rem; }
-      .structure-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -1722,7 +1690,7 @@
   <!-- Progress -->
   <div class="progress-container">
     <div class="progress-track"><div class="progress-fill" id="progressBar"></div></div>
-    <div class="progress-counter" id="slideCounter">01 / 48</div>
+    <div class="progress-counter" id="slideCounter">01 / 48</div> <!-- updated from 47 to 48 -->
   </div>
 
   <!-- Help Overlay -->
@@ -1790,20 +1758,13 @@
         </div>
       </section>
 
-      <!-- SLIDE 3: What is a Photo Essay? (improved) -->
+      <!-- SLIDE 3: What is a Photo Essay? -->
       <section class="split-artistic pattern-subtle">
         <div class="artistic-grid">
           <div class="definition-panel">
             <div class="panel-label">Definition</div>
             <h2>What is a<br>Photo Essay?</h2>
-            <p class="definition-large">A photo essay is a sequence of photographs arranged to tell a story.</p>
-            <p>Good photo essays answer:</p>
-            <ul style="color: var(--wla-charcoal); margin-left: 1.5rem;">
-              <li>Who is involved?</li>
-              <li>What is happening?</li>
-              <li>Where does it take place?</li>
-              <li>Why does it matter?</li>
-            </ul>
+            <p class="definition-large">A photo essay is a sequence of photographs arranged to tell a story. It combines images and words to create a narrative that informs or moves the viewer.</p>
             <div class="philosophy-quote">“A photo essay creates a series of emotions in the viewer”<cite>— Wikimedia Commons</cite></div>
           </div>
           <div class="visual-preview">
@@ -1858,57 +1819,43 @@
         <div class="scroll-hint"><svg width="40" height="40" viewBox="0 0 24 24"><path d="M12 5v14M8 15l4 4 4-4" stroke="currentColor" fill="none" stroke-width="2"/></svg></div>
       </section>
 
-      <!-- SLIDE 7: Rites Defined (simplified) -->
+      <!-- SLIDE 7: Rites Defined (improved) -->
       <section class="typographic-slide pattern-soft">
         <div class="typographic-container">
           <span class="typographic-label">Definition</span>
           <h1 class="typographic-word">Rites</h1>
-          <p class="typographic-definition">A rite is an important cultural event or ceremony that marks a significant moment in life.</p>
-          <div class="ritual-example">Examples: weddings, initiations, funerals, graduations</div>
+          <p class="typographic-definition">A rite is an important cultural event or ceremony that marks a significant moment in life. Examples: weddings, initiations, funerals, graduation.</p>
         </div>
       </section>
 
-      <!-- SLIDE 8: Rituals Defined (simplified) -->
+      <!-- SLIDE 8: Rituals Defined (improved) -->
       <section class="typographic-slide alt pattern-soft">
         <div class="typographic-container">
           <span class="typographic-label">Definition</span>
           <h1 class="typographic-word">Rituals</h1>
-          <p class="typographic-definition">Rituals are repeated actions or practices performed in meaningful ways.</p>
-          <div class="ritual-example">Examples: greeting elders, preparing food for ceremonies, daily grooming</div>
+          <p class="typographic-definition">Rituals are repeated actions or practices performed in meaningful ways. Examples: greeting elders, prayer, preparing food for ceremonies, daily grooming.</p>
+          <div class="ritual-example">“The barber shop is a daily grooming ritual and a place of community.”</div>
         </div>
       </section>
 
       <!-- SLIDE 9: How Rites and Rituals Connect (improved) -->
       <section class="connection-slide">
-        <h2 class="connection-title">The Connection</h2>
+        <h2 class="connection-title">How They Connect</h2>
         <div class="connection-grid">
           <div class="connection-item">
             <h3>Rites</h3>
-            <p>Important events marking life transitions.</p>
+            <p>Important life events – the special moments.</p>
           </div>
           <div class="connection-arrow">⇄</div>
           <div class="connection-item">
             <h3>Rituals</h3>
-            <p>Repeated actions that give meaning to those events.</p>
+            <p>Everyday actions that give meaning to those events.</p>
           </div>
         </div>
-        <p class="connection-note">Example: A wedding (rite) includes exchanging rings, dancing, and blessings (rituals). Documenting rituals helps viewers understand rites.</p>
+        <p class="connection-note">Rituals are the repeated actions that fill a rite with meaning. Together they form the fabric of culture.</p>
       </section>
 
-      <!-- SLIDE 10: Photo Essay Structure (new) -->
-      <section class="structure-slide">
-        <h2>Photo Essay Structure</h2>
-        <div class="structure-grid">
-          <div class="structure-item"><h3>1. Establishing Shot</h3><p>Shows the location or environment</p></div>
-          <div class="structure-item"><h3>2. Characters</h3><p>Introduces the people involved</p></div>
-          <div class="structure-item"><h3>3. The Process</h3><p>Shows actions step by step</p></div>
-          <div class="structure-item"><h3>4. Details</h3><p>Close-up shots that add depth</p></div>
-          <div class="structure-item"><h3>5. Key Moment</h3><p>The most important moment</p></div>
-          <div class="structure-item"><h3>6. Closing Image</h3><p>Shows the result or transformation</p></div>
-        </div>
-      </section>
-
-      <!-- SLIDE 11: Community Voices -->
+      <!-- SLIDE 10: Community Voices -->
       <section class="cinematic-portrait" data-background="images/portraits/elder.jpg" data-background-opacity="0.4">
         <div class="portrait-quote">
           <div class="quote-symbol">“</div>
@@ -1918,7 +1865,7 @@
         <div class="portrait-overlay"></div>
       </section>
 
-      <!-- SLIDE 12: Barber Shop Intro -->
+      <!-- SLIDE 11: Barber Shop Intro -->
       <section class="film-strip-intro pattern-subtle">
         <h2 class="film-title">The Barber Shop</h2>
         <h3 class="film-subtitle">A Ugandan Grooming Ritual</h3>
@@ -1933,96 +1880,105 @@
         </div>
       </section>
 
-      <!-- SLIDES 13-24: Barber Story (12 slides) - rewritten with clear, factual captions -->
+      <!-- SLIDES 12-23: Barber Story (12 slides) - IMPROVED CAPTIONS -->
       <section class="story-photo ken-burns" data-background="images/barber-story/01-establishing.jpg">
-        <div class="story-caption">
+        <div class="story-caption left caption-delay-1">
           <span class="caption-number">01/12</span>
           <h2>Opening the Shop</h2>
-          <p>The barber prepares his tools before the first customers arrive.</p>
-          <div class="caption-context">Barber shops often begin the day by cleaning equipment and arranging chairs.</div>
+          <p>The barber prepares his tools before the first customers arrive. Barber shops often begin the day by cleaning equipment and arranging chairs.</p>
+          <span class="caption-location">Kampala, Uganda</span>
         </div>
       </section>
       <section class="story-photo ken-burns" data-background="images/barber-story/02-arrival.jpg">
-        <div class="story-caption">
+        <div class="story-caption right caption-delay-2">
           <span class="caption-number">02/12</span>
           <h2>Greeting the Customer</h2>
-          <p>A customer greets the barber before sitting in the chair.</p>
-          <div class="caption-context">Greeting is an important sign of respect in many barber shops.</div>
+          <p>A customer greets the barber before sitting in the chair. Greeting is an important sign of respect in many barber shops.</p>
+          <span class="caption-location">Kampala, Uganda</span>
         </div>
       </section>
       <section class="story-photo ken-burns" data-background="images/barber-story/03-waiting-area.jpg">
-        <div class="story-caption">
+        <div class="story-caption left caption-delay-1">
           <span class="caption-number">03/12</span>
           <h2>Waiting for a Turn</h2>
-          <p>Customers wait and talk while the barber finishes the previous haircut.</p>
-          <div class="caption-context">Barber shops often function as informal community gathering spaces.</div>
+          <p>Customers wait and talk while the barber finishes the previous haircut. Barber shops often function as informal community gathering spaces.</p>
+          <span class="caption-location">Kampala, Uganda</span>
         </div>
       </section>
       <section class="story-photo ken-burns" data-background="images/barber-story/04-tool-preparation.jpg">
-        <div class="story-caption">
+        <div class="story-caption right caption-delay-2">
           <span class="caption-number">04/12</span>
           <h2>Preparing the Tools</h2>
-          <p>The barber checks the clippers and scissors before starting the haircut.</p>
+          <p>The barber checks the clippers and scissors before starting the haircut. Clean and sharp tools are essential for a good cut.</p>
+          <span class="caption-location">Kampala, Uganda</span>
         </div>
       </section>
       <section class="story-photo ken-burns" data-background="images/barber-story/05-cloth-placement.jpg">
-        <div class="story-caption">
+        <div class="story-caption left caption-delay-1">
           <span class="caption-number">05/12</span>
           <h2>The Protective Cloth</h2>
-          <p>A cloth is placed around the customer's shoulders to keep hair from falling on clothing.</p>
+          <p>A cloth is placed around the customer’s shoulders to keep hair from falling on clothing. This small ritual marks the start of the haircut.</p>
+          <span class="caption-location">Kampala, Uganda</span>
         </div>
       </section>
       <section class="story-photo ken-burns" data-background="images/barber-story/06-haircut-action.jpg">
-        <div class="story-caption">
+        <div class="story-caption right caption-delay-2">
           <span class="caption-number">06/12</span>
           <h2>Beginning the Haircut</h2>
-          <p>The barber begins trimming the hair using electric clippers.</p>
+          <p>The barber begins trimming the hair using electric clippers. The steady buzz of clippers is a familiar sound in the shop.</p>
+          <span class="caption-location">Kampala, Uganda</span>
         </div>
       </section>
       <section class="story-photo ken-burns" data-background="images/barber-story/07-detail-focus.jpg">
-        <div class="story-caption">
+        <div class="story-caption left caption-delay-1">
           <span class="caption-number">07/12</span>
           <h2>Careful Shaping</h2>
-          <p>Small scissors are used to refine the shape around the ears.</p>
+          <p>Small scissors are used to refine the shape around the ears. Precision work shows the barber's skill.</p>
+          <span class="caption-location">Kampala, Uganda</span>
         </div>
       </section>
       <section class="story-photo ken-burns" data-background="images/barber-story/08-shaving.jpg">
-        <div class="story-caption">
+        <div class="story-caption right caption-delay-2">
           <span class="caption-number">08/12</span>
           <h2>Conversation</h2>
-          <p>Customers and the barber continue talking during the haircut.</p>
+          <p>Customers and the barber continue talking during the haircut. These conversations strengthen community bonds.</p>
+          <span class="caption-location">Kampala, Uganda</span>
         </div>
       </section>
       <section class="story-photo ken-burns" data-background="images/barber-story/09-hot-towel.jpg">
-        <div class="story-caption">
+        <div class="story-caption left caption-delay-1">
           <span class="caption-number">09/12</span>
           <h2>Checking the Mirror</h2>
-          <p>The customer checks the haircut in the mirror.</p>
+          <p>The customer checks the haircut in the mirror. This moment of approval is important before payment.</p>
+          <span class="caption-location">Kampala, Uganda</span>
         </div>
       </section>
       <section class="story-photo ken-burns" data-background="images/barber-story/10-aftershave.jpg">
-        <div class="story-caption">
+        <div class="story-caption right caption-delay-2">
           <span class="caption-number">10/12</span>
           <h2>Final Touches</h2>
-          <p>Loose hair is brushed away from the neck and face.</p>
+          <p>Loose hair is brushed away from the neck and face. A final clean‑up leaves the customer fresh.</p>
+          <span class="caption-location">Kampala, Uganda</span>
         </div>
       </section>
       <section class="story-photo ken-burns" data-background="images/barber-story/11-mirror-moment.jpg">
-        <div class="story-caption">
+        <div class="story-caption left caption-delay-1">
           <span class="caption-number">11/12</span>
           <h2>Payment</h2>
-          <p>The customer pays for the haircut before leaving.</p>
+          <p>The customer pays for the haircut before leaving. The transaction completes the service.</p>
+          <span class="caption-location">Kampala, Uganda</span>
         </div>
       </section>
       <section class="story-photo ken-burns" data-background="images/barber-story/12-departure.jpg">
-        <div class="story-caption">
+        <div class="story-caption right caption-delay-2">
           <span class="caption-number">12/12</span>
           <h2>Leaving the Shop</h2>
-          <p>The customer leaves with a fresh haircut, completing the grooming ritual.</p>
+          <p>The customer leaves with a fresh haircut, completing the grooming ritual. The cycle will begin again with the next customer.</p>
+          <span class="caption-location">Kampala, Uganda</span>
         </div>
       </section>
 
-      <!-- SLIDE 25: Deconstructing the Story -->
+      <!-- SLIDE 24: Deconstructing the Story -->
       <section class="deconstruct-slide">
         <h2 class="section-title">Deconstructing the Story</h2>
         <div class="acts-container">
@@ -2033,6 +1989,19 @@
           <div class="act act5">Act V<br>Resolution</div>
         </div>
         <div class="shot-breakdown"><span>Establishing</span><span>Portrait</span><span>Action</span><span>Detail</span><span>Closing</span></div>
+      </section>
+
+      <!-- SLIDE 25: Photo Essay Structure (NEW) -->
+      <section class="list-slide">
+        <h2>Photo Essay Structure</h2>
+        <ul class="elegant-list">
+          <li><strong>Establishing Shot:</strong> Shows the location or environment.</li>
+          <li><strong>Characters:</strong> Introduces the people involved.</li>
+          <li><strong>The Process:</strong> Shows actions step by step.</li>
+          <li><strong>Details:</strong> Close‑up shots that add depth.</li>
+          <li><strong>Key Moment:</strong> The most important moment.</li>
+          <li><strong>Closing Image:</strong> Shows the result or transformation.</li>
+        </ul>
       </section>
 
       <!-- SLIDE 26: What Makes a Great Photo Essay? -->
@@ -2080,7 +2049,7 @@
         <h2>Caption Writing</h2>
         <div class="caption-comparison">
           <div class="bad-caption"><div class="caption-badge">✕ Poor</div><p>"A man getting a haircut"</p></div>
-          <div class="good-caption"><div class="caption-badge">✓ Excellent</div><p>"A barber trims a customer's hair in Kampala, Uganda. Barber shops serve as social spaces where community news is shared."</p></div>
+          <div class="good-caption"><div class="caption-badge">✓ Excellent</div><p>"James receives his weekly haircut from Musa, who has been the neighborhood barber for 22 years. The ritual includes hot towel treatment and conversation about local news."</p></div>
         </div>
         <div class="caption-formula"><span>WHO</span> + <span>WHAT</span> + <span>WHERE</span> + <span>WHEN</span> + <span>WHY</span> + <span>CONTEXT</span></div>
       </section>
@@ -2147,10 +2116,10 @@
       <section class="tutorial-step">
         <h2>Step 3: Add Descriptions</h2>
         <div class="step-visual">
-          <div><strong>Title:</strong> "Barber preparing tools, Kampala, Uganda"</div>
-          <div><strong>Description:</strong> A barber checks his clippers and scissors before the first customer arrives. Barber shops are spaces for grooming and community conversation.</div>
-          <div><strong>Date:</strong> 2026-01-15</div>
-          <div><strong>Categories:</strong> Wiki Loves Africa 2026, Rites and Rituals, Uganda, Barbers</div>
+          <div><strong>Title:</strong> "Ritual Name, Location - Photo 01"</div>
+          <div><strong>Description:</strong> Who, What, Where, When, Why</div>
+          <div><strong>Date:</strong> When photographed</div>
+          <div><strong>Categories:</strong> Wiki Loves Africa 2026, Rites and Rituals, Uganda</div>
           <div class="screenshot-placeholder">[ SCREENSHOT: Description fields ]</div>
         </div>
       </section>
@@ -2166,7 +2135,7 @@
           </div>
           <div class="option-card">
             <h3>Option B: From Main Contest Page</h3>
-            <p>On the main page, look for "click here" under photo essay.</p>
+            <p>On the main page, look for "click here" under photo essay – as of early March, the link may not be active yet. Use the direct link above.</p>
           </div>
         </div>
         <div class="important-note">All photos must be uploaded INDIVIDUALLY first</div>
@@ -2512,7 +2481,7 @@
       // Slide animations
       Reveal.addEventListener('slidechanged', function(e) {
         const slide = e.currentSlide;
-        const els = slide.querySelectorAll('h1, h2, h3, p, .meta-item, .gallery-item, .minimal-card, .technique, .act, .theme-circle, .film-frame, .story-caption, .quote-text, .impact-number, .connection-item, .screenshot-placeholder, .final-resource-card, .structure-item');
+        const els = slide.querySelectorAll('h1, h2, h3, p, .meta-item, .gallery-item, .minimal-card, .technique, .act, .theme-circle, .film-frame, .story-caption, .quote-text, .impact-number, .connection-item, .screenshot-placeholder, .final-resource-card');
         els.forEach((el, i) => {
           el.style.opacity = '0';
           el.style.transform = 'translateY(20px)';
@@ -2524,7 +2493,7 @@
         });
       });
 
-      console.log('%c🎬 WLA 2026 - Content Improved', 'color:#f16160;font-size:16px;');
+      console.log('%c🎬 WLA 2026 - Improved Content', 'color:#f16160;font-size:16px;');
       showNotification('Welcome to the session!', '👋');
     })();
   </script>
