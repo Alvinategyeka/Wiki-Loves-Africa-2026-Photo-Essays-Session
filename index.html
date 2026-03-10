@@ -363,7 +363,7 @@
     .portrait-glow {
       position: relative;
       width: 100%;
-      max-width: 450px;
+      max-width: 400px; /* slightly smaller */
       margin: 0 auto;
     }
     .portrait-glow::before {
@@ -418,59 +418,73 @@
       margin-bottom: 0.5rem;
     }
     .cover-title {
-      font-size: 5rem;
+      font-size: 4.5rem; /* slightly reduced to fit three lines */
       line-height: 1.1;
       font-weight: 700;
       color: var(--wla-charcoal);
       text-transform: uppercase;
-      margin-bottom: 0.5rem;
+      margin-bottom: 1rem;
       text-shadow: 0 0 20px rgba(241,97,96,0.5);
     }
     body.dark-mode .cover-title {
       color: white;
+    }
+    .cover-theme-block {
+      margin: 1.5rem 0;
+    }
+    .cover-theme-title {
+      font-size: 1.5rem;
+      color: var(--wla-teal);
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
     .cover-theme {
       font-size: 3rem;
       font-family: var(--font-serif);
       font-style: italic;
       color: var(--wla-coral);
-      margin-bottom: 2rem;
+      margin-bottom: 0.5rem;
       border-left: 3px solid var(--wla-teal);
       padding-left: 1rem;
     }
-    .cover-host {
-      font-size: 1.5rem;
-      color: var(--wla-teal);
-      margin-bottom: 1rem;
-    }
-    .cover-host span {
+    .cover-theme-desc {
+      font-size: 1.2rem;
       color: var(--wla-charcoal);
-      font-weight: 600;
+      opacity: 0.8;
     }
-    body.dark-mode .cover-host span {
+    body.dark-mode .cover-theme-desc {
       color: white;
     }
-    .cover-meta {
-      display: flex;
-      gap: 2rem;
+    .cover-trainer {
       margin: 2rem 0;
     }
-    .cover-meta-item {
-      text-align: center;
+    .cover-trainer p {
+      font-size: 0.9rem;
+      letter-spacing: 3px;
+      color: var(--wla-coral);
+      margin-bottom: 0.2rem;
     }
-    .cover-meta-number {
+    .cover-trainer h3 {
       font-size: 2.5rem;
-      font-family: var(--font-serif);
-      color: var(--wla-yellow);
-      line-height: 1;
-    }
-    .cover-meta-label {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      opacity: 0.8;
       color: var(--wla-charcoal);
+      margin: 0.2rem 0;
     }
-    body.dark-mode .cover-meta-label {
+    body.dark-mode .cover-trainer h3 {
+      color: white;
+    }
+    .cover-trainer span {
+      font-size: 1rem;
+      color: var(--wla-teal);
+    }
+    .cover-session-value {
+      font-size: 1rem;
+      color: var(--wla-charcoal);
+      margin: 2rem 0 1rem;
+      font-style: italic;
+      border-top: 1px solid rgba(241,97,96,0.3);
+      padding-top: 1rem;
+    }
+    body.dark-mode .cover-session-value {
       color: white;
     }
     .cover-tags {
@@ -917,7 +931,7 @@
       font-size: 1.1rem;
     }
 
-    /* ========== STORY PHOTOS (KEN BURNS) ========== */
+    /* ========== STORY PHOTOS (REDESIGNED: NO BLACK STRIP, CAPTIONS VISIBLE) ========== */
     .story-photo {
       position: relative;
       overflow: hidden;
@@ -933,55 +947,55 @@
     }
     .story-caption {
       position: absolute;
-      bottom: 100px;
-      max-width: 650px;
-      padding: 2rem;
-      background: linear-gradient(90deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.8) 70%, transparent 100%);
-      backdrop-filter: blur(10px);
+      bottom: 30px; /* moved up a bit */
+      left: 30px;
+      right: 30px;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1.5rem;
+      background: rgba(0,0,0,0.7); /* solid dark background for readability */
+      backdrop-filter: blur(5px);
       border-left: 4px solid var(--wla-coral);
+      border-radius: 0 8px 8px 0;
       animation: slideIn 0.5s ease;
       z-index: 10;
-      color: var(--wla-charcoal);
+      color: white;
+      text-align: left;
     }
     body.dark-mode .story-caption {
-      background: linear-gradient(90deg, rgba(30,30,30,0.95) 0%, rgba(30,30,30,0.8) 70%, transparent 100%);
-      color: white;
+      background: rgba(255,255,255,0.9);
+      color: var(--wla-charcoal);
+      border-left-color: var(--wla-coral);
     }
-    .story-caption.left { left: 100px; }
-    .story-caption.right {
-      right: 100px;
-      border-left: none;
-      border-right: 4px solid var(--wla-coral);
-      background: linear-gradient(270deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.8) 70%, transparent 100%);
-    }
-    body.dark-mode .story-caption.right {
-      background: linear-gradient(270deg, rgba(30,30,30,0.95) 0%, rgba(30,30,30,0.8) 70%, transparent 100%);
-    }
+    .story-caption.left { left: 30px; right: auto; }
+    .story-caption.right { right: 30px; left: auto; border-left: none; border-right: 4px solid var(--wla-coral); }
     .caption-number {
       color: var(--wla-coral);
       font-size: 0.9rem;
       letter-spacing: 3px;
       display: block;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.3rem;
     }
     .story-caption h2 {
-      font-size: 2.5rem;
+      font-size: 2rem;
       color: inherit;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
     }
     .story-caption p {
-      font-size: 1.2rem;
+      font-size: 1rem;
       font-family: var(--font-serif);
-      font-style: italic;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
     }
     .caption-location {
       color: var(--wla-teal);
       font-size: 0.8rem;
       text-transform: uppercase;
+      display: block;
+      margin-top: 0.3rem;
     }
     @keyframes slideIn {
-      from { opacity: 0; transform: translateY(50px); }
+      from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
     .caption-delay-1 { animation-delay: 0.2s; }
@@ -1593,9 +1607,9 @@
       .connection-arrow { transform: rotate(90deg); }
       .arc-visual { flex-direction: column; }
       .arc-line { width: 4px; height: 50px; }
-      .story-caption { max-width: 90%; }
-      .story-caption.left { left: 20px; }
-      .story-caption.right { right: 20px; }
+      .story-caption { max-width: 90%; left: 20px !important; right: 20px !important; }
+      .story-caption.left { left: 20px; right: auto; }
+      .story-caption.right { right: 20px; left: auto; }
       .mobile-nav { bottom: 20px; }
       .control-panel { bottom: 20px; right: 20px; }
       .progress-container { left: 20px; bottom: 20px; }
@@ -1605,19 +1619,113 @@
       .reveal h2 { font-size: 2.5rem; }
       .cover-title { font-size: 3rem; }
       .cover-theme { font-size: 2rem; }
-      .cover-host { font-size: 1.2rem; }
+      .cover-trainer h3 { font-size: 1.8rem; }
       .typographic-word { font-size: 4rem; }
       .quote-text { font-size: 2rem; }
-      .story-caption h2 { font-size: 1.8rem; }
-      .story-caption p { font-size: 1rem; }
+      .story-caption h2 { font-size: 1.5rem; }
+      .story-caption p { font-size: 0.9rem; }
       .impact-number { font-size: 4rem; }
       .control-panel { bottom: 20px; right: 20px; }
       .back-to-top { left: 20px; bottom: 20px; }
       .progress-container { left: 20px; bottom: 20px; }
       .progress-track { width: 120px; }
-      .cover-meta { flex-wrap: wrap; justify-content: center; }
       .cover-tags { justify-content: center; }
       .mobile-nav button { width: 56px; height: 56px; font-size: 1.5rem; }
+    }
+
+    /* Bad vs Good comparison slide */
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+    .comparison-col {
+      padding: 2rem;
+      border-radius: 12px;
+    }
+    .comparison-col.bad {
+      background: rgba(255,0,0,0.05);
+      border: 2px solid #ff4444;
+    }
+    .comparison-col.good {
+      background: rgba(8,173,157,0.05);
+      border: 2px solid var(--wla-teal);
+    }
+    .comparison-col h3 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .comparison-col ul {
+      list-style: none;
+      margin-bottom: 1rem;
+    }
+    .comparison-col li {
+      margin-bottom: 0.5rem;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+    .comparison-col li::before {
+      content: "•";
+      color: var(--wla-coral);
+      font-size: 1.5rem;
+      position: absolute;
+      left: 0;
+    }
+    .comparison-caption {
+      font-style: italic;
+      margin-top: 1rem;
+      padding: 1rem;
+      background: rgba(0,0,0,0.05);
+      border-radius: 8px;
+    }
+
+    /* Photo essay structure slide */
+    .structure-list {
+      max-width: 800px;
+      margin: 2rem auto;
+    }
+    .structure-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+    }
+    .structure-number {
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--wla-coral);
+      margin-right: 1.5rem;
+      min-width: 60px;
+    }
+    .structure-content h4 {
+      font-size: 1.5rem;
+      margin-bottom: 0.3rem;
+    }
+    .structure-content p {
+      color: var(--wla-teal);
+    }
+
+    /* How judges look slide */
+    .judges-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      max-width: 900px;
+      margin: 2rem auto;
+    }
+    .judge-item {
+      background: rgba(255,255,255,0.05);
+      padding: 1.5rem;
+      border-radius: 12px;
+      text-align: center;
+    }
+    .judge-item .emoji {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+    .judge-item h4 {
+      color: var(--wla-coral);
+      margin-bottom: 0.5rem;
     }
   </style>
 </head>
@@ -1690,7 +1798,7 @@
   <!-- Progress -->
   <div class="progress-container">
     <div class="progress-track"><div class="progress-fill" id="progressBar"></div></div>
-    <div class="progress-counter" id="slideCounter">01 / 48</div> <!-- updated from 47 to 48 -->
+    <div class="progress-counter" id="slideCounter">01 / 51</div> <!-- updated total -->
   </div>
 
   <!-- Help Overlay -->
@@ -1713,7 +1821,7 @@
   <!-- Reveal Slides -->
   <div class="reveal">
     <div class="slides">
-      <!-- SLIDE 1: COVER -->
+      <!-- SLIDE 1: COVER (REDESIGNED) -->
       <section class="cover-slide" data-background-color="#fdfcfe" data-transition="zoom">
         <div class="cover-content">
           <div class="cover-left">
@@ -1725,13 +1833,19 @@
           </div>
           <div class="cover-right">
             <div class="cover-event">Wiki Loves Africa 2026</div>
-            <h1 class="cover-title">Photo Essay<br>Session</h1>
-            <div class="cover-theme">Rites & Rituals</div>
-            <div class="cover-host">with <span>Alvin Ategyeka</span></div>
-            <div class="cover-meta">
-              <div class="cover-meta-item"><span class="cover-meta-number" data-target="55">0</span><span class="cover-meta-label">Countries</span></div>
-              <div class="cover-meta-item"><span class="cover-meta-number" data-target="12854">0</span><span class="cover-meta-label">Contributors</span></div>
-              <div class="cover-meta-item"><span class="cover-meta-number" data-target="146698">0</span><span class="cover-meta-label">Images</span></div>
+            <h1 class="cover-title">CREATING<br>POWERFUL<br>PHOTO ESSAYS</h1>
+            <div class="cover-theme-block">
+              <div class="cover-theme-title">2026 Theme</div>
+              <div class="cover-theme">Rites & Rituals</div>
+              <div class="cover-theme-desc">Documenting Cultural Practices Through Photography</div>
+            </div>
+            <div class="cover-trainer">
+              <p>Training by</p>
+              <h3>ALVIN ATEGYEKA</h3>
+              <span>Wikimedia Contributor · Wiki Loves Africa Ambassador</span>
+            </div>
+            <div class="cover-session-value">
+              Learn how to plan, photograph, caption, and publish a compelling photo essay on Wikimedia Commons.
             </div>
             <div class="cover-tags">
               <span>#WikiLovesAfrica</span>
@@ -1742,30 +1856,21 @@
         </div>
       </section>
 
-      <!-- SLIDE 2: Welcome -->
-      <section class="cinematic-quote pattern-bg" data-background-image="images/patterns/african-texture.jpg" data-background-opacity="0.15">
-        <div class="quote-container">
-          <div class="quote-mark left">“</div>
-          <div class="quote-text">Thank you for documenting<br>Africa's rich cultural heritage</div>
-          <div class="quote-mark right">”</div>
-        </div>
-        <div class="global-impact">
-          <div class="impact-number" data-target="2400000000">0</div>
-          <div class="impact-label">views of Wiki Loves Africa images</div>
-        </div>
-        <div class="legacy-bar">
-          <span>12 years</span> <span>·</span> <span>55 countries</span> <span>·</span> <span>12,854 contributors</span>
+      <!-- SLIDE 2: VISUAL SHOCK (NEW) -->
+      <section class="cinematic-quote" data-background="images/placeholder-ritual.jpg" data-background-opacity="0.8">
+        <div style="position: absolute; bottom: 50px; left: 0; right: 0; text-align: center; color: white; font-size: 2rem; font-family: var(--font-serif); text-shadow: 2px 2px 10px rgba(0,0,0,0.5); background: rgba(0,0,0,0.3); padding: 1rem;">
+          Every culture has rituals. Some we celebrate. Some we never notice.
         </div>
       </section>
 
-      <!-- SLIDE 3: What is a Photo Essay? -->
+      <!-- SLIDE 3: What is a Photo Essay? (improved) -->
       <section class="split-artistic pattern-subtle">
         <div class="artistic-grid">
           <div class="definition-panel">
             <div class="panel-label">Definition</div>
             <h2>What is a<br>Photo Essay?</h2>
-            <p class="definition-large">A photo essay is a sequence of photographs arranged to tell a story. It combines images and words to create a narrative that informs or moves the viewer.</p>
-            <div class="philosophy-quote">“A photo essay creates a series of emotions in the viewer”<cite>— Wikimedia Commons</cite></div>
+            <p class="definition-large">A photo essay is a sequence of photographs that work together to tell a story. Each image shows a different moment, action, or detail. When placed in the correct order, the images guide the viewer through an experience – from beginning, to middle, to conclusion.</p>
+            <div class="philosophy-quote">A good photo essay answers these questions: Who is involved? What is happening? Where does it take place? Why does it matter?</div>
           </div>
           <div class="visual-preview">
             <div class="preview-strip">
@@ -1782,7 +1887,7 @@
         </div>
       </section>
 
-      <!-- SLIDE 4: 2026 Theme -->
+      <!-- SLIDE 4: 2026 Theme (unchanged) -->
       <section class="theme-masterpiece">
         <div class="theme-content">
           <span class="theme-year">2026</span>
@@ -1797,7 +1902,7 @@
         </div>
       </section>
 
-      <!-- SLIDE 5: Why Photo Essays Matter -->
+      <!-- SLIDE 5: Why Photo Essays Matter (improved) -->
       <section class="gallery-wall pattern-subtle">
         <h2>Why Photo Essays Matter</h2>
         <div class="gallery-grid">
@@ -1805,36 +1910,37 @@
           <div class="gallery-item"><div class="gallery-image" style="background: linear-gradient(45deg, #08ad9d, #ffda27);"></div><div class="gallery-caption">Mohamed Hozyen</div></div>
           <div class="gallery-item"><div class="gallery-image" style="background: linear-gradient(45deg, #ffda27, #f16160);"></div><div class="gallery-caption">Picture of the Year 2021</div></div>
         </div>
+        <p style="margin-top:2rem; text-align:center; font-size:1.2rem; color:var(--wla-charcoal);">Photo essays help us: document cultural practices, show processes step‑by‑step, preserve traditions for the future, help viewers understand how something happens.</p>
       </section>
 
-      <!-- SLIDE 6: Learning Objectives -->
+      <!-- SLIDE 6: Learning Objectives (improved) -->
       <section class="objectives-minimal">
         <h2 class="minimal-title">Learning Objectives</h2>
         <div class="minimal-grid">
-          <div class="minimal-card"><div class="card-number">01</div><h3>Storytelling</h3><p>Visual narrative structure</p></div>
-          <div class="minimal-card"><div class="card-number">02</div><h3>Culture</h3><p>Understanding rituals</p></div>
-          <div class="minimal-card"><div class="card-number">03</div><h3>Captions</h3><p>Writing with context</p></div>
-          <div class="minimal-card"><div class="card-number">04</div><h3>Commons</h3><p>Upload to Wikimedia</p></div>
+          <div class="minimal-card"><div class="card-number">01</div><h3>Storytelling</h3><p>Learn how to structure a visual story using multiple photographs.</p></div>
+          <div class="minimal-card"><div class="card-number">02</div><h3>Culture</h3><p>Understand how to identify and respectfully document rites and rituals.</p></div>
+          <div class="minimal-card"><div class="card-number">03</div><h3>Captions</h3><p>Learn how to write informative captions that explain the image.</p></div>
+          <div class="minimal-card"><div class="card-number">04</div><h3>Commons</h3><p>Understand how to upload and organize your photo essay on Wikimedia Commons.</p></div>
         </div>
         <div class="scroll-hint"><svg width="40" height="40" viewBox="0 0 24 24"><path d="M12 5v14M8 15l4 4 4-4" stroke="currentColor" fill="none" stroke-width="2"/></svg></div>
       </section>
 
-      <!-- SLIDE 7: Rites Defined (improved) -->
+      <!-- SLIDE 7: Rites Defined (simplified) -->
       <section class="typographic-slide pattern-soft">
         <div class="typographic-container">
           <span class="typographic-label">Definition</span>
           <h1 class="typographic-word">Rites</h1>
-          <p class="typographic-definition">A rite is an important cultural event or ceremony that marks a significant moment in life. Examples: weddings, initiations, funerals, graduation.</p>
+          <p class="typographic-definition">A rite is a special cultural event or ceremony that marks an important moment in life. Examples: birth ceremonies, initiation, weddings, funerals.</p>
         </div>
       </section>
 
-      <!-- SLIDE 8: Rituals Defined (improved) -->
+      <!-- SLIDE 8: Rituals Defined (simplified) -->
       <section class="typographic-slide alt pattern-soft">
         <div class="typographic-container">
           <span class="typographic-label">Definition</span>
           <h1 class="typographic-word">Rituals</h1>
-          <p class="typographic-definition">Rituals are repeated actions or practices performed in meaningful ways. Examples: greeting elders, prayer, preparing food for ceremonies, daily grooming.</p>
-          <div class="ritual-example">“The barber shop is a daily grooming ritual and a place of community.”</div>
+          <p class="typographic-definition">A ritual is a repeated action or practice performed regularly and with meaning. Examples: greeting elders, preparing food for ceremonies, grooming, prayer.</p>
+          <div class="ritual-example">Rituals are the repeated actions that make rites meaningful.</div>
         </div>
       </section>
 
@@ -1843,19 +1949,19 @@
         <h2 class="connection-title">How They Connect</h2>
         <div class="connection-grid">
           <div class="connection-item">
-            <h3>Rites</h3>
-            <p>Important life events – the special moments.</p>
+            <h3>Rite</h3>
+            <p>The important cultural event (e.g., a wedding).</p>
           </div>
           <div class="connection-arrow">⇄</div>
           <div class="connection-item">
             <h3>Rituals</h3>
-            <p>Everyday actions that give meaning to those events.</p>
+            <p>The repeated actions inside the event (e.g., exchanging rings, dancing).</p>
           </div>
         </div>
-        <p class="connection-note">Rituals are the repeated actions that fill a rite with meaning. Together they form the fabric of culture.</p>
+        <p class="connection-note">By photographing rituals, you explain the meaning of rites.</p>
       </section>
 
-      <!-- SLIDE 10: Community Voices -->
+      <!-- SLIDE 10: Community Voices (improved) -->
       <section class="cinematic-portrait" data-background="images/portraits/elder.jpg" data-background-opacity="0.4">
         <div class="portrait-quote">
           <div class="quote-symbol">“</div>
@@ -1863,12 +1969,14 @@
           <div class="quote-author">— James Ochieng, Barber for 40 years</div>
         </div>
         <div class="portrait-overlay"></div>
+        <p style="position:absolute; bottom:20px; left:20px; color:var(--wla-yellow); background:rgba(0,0,0,0.5); padding:0.5rem;">Community voices add meaning to visual stories.</p>
       </section>
 
-      <!-- SLIDE 11: Barber Shop Intro -->
+      <!-- SLIDE 11: Barber Shop Intro (improved) -->
       <section class="film-strip-intro pattern-subtle">
         <h2 class="film-title">The Barber Shop</h2>
         <h3 class="film-subtitle">A Ugandan Grooming Ritual</h3>
+        <p style="max-width:800px; margin:1rem auto;">The barber shop is an example of an everyday ritual of grooming and community interaction. This photo essay documents the repeated cultural practice of maintaining personal appearance – a space where people gather, talk, and participate in everyday community life.</p>
         <div class="film-strip-container">
           <div class="film-strip">
             <div class="film-frame"><img src="images/barber-story/01-establishing.jpg" alt="" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22150%22%20height%3D%22150%22%20viewBox%3D%220%200%20150%20150%22%3E%3Crect%20width%3D%22150%22%20height%3D%22150%22%20fill%3D%22%23f16160%22%2F%3E%3Ctext%20x%3D%2230%22%20y%3D%2280%22%20fill%3D%22white%22%3E01%3C%2Ftext%3E%3C%2Fsvg%3E'"><span class="frame-number">01</span></div>
@@ -1880,7 +1988,7 @@
         </div>
       </section>
 
-      <!-- SLIDES 12-23: Barber Story (12 slides) - IMPROVED CAPTIONS -->
+      <!-- SLIDES 12-23: Barber Story (12 slides) - IMPROVED, DOCUMENTARY CAPTIONS -->
       <section class="story-photo ken-burns" data-background="images/barber-story/01-establishing.jpg">
         <div class="story-caption left caption-delay-1">
           <span class="caption-number">01/12</span>
@@ -1893,7 +2001,7 @@
         <div class="story-caption right caption-delay-2">
           <span class="caption-number">02/12</span>
           <h2>Greeting the Customer</h2>
-          <p>A customer greets the barber before sitting in the chair. Greeting is an important sign of respect in many barber shops.</p>
+          <p>A customer greets the barber with a handshake before sitting down. In many Ugandan barber shops, greeting is an important sign of respect.</p>
           <span class="caption-location">Kampala, Uganda</span>
         </div>
       </section>
@@ -1933,7 +2041,7 @@
         <div class="story-caption left caption-delay-1">
           <span class="caption-number">07/12</span>
           <h2>Careful Shaping</h2>
-          <p>Small scissors are used to refine the shape around the ears. Precision work shows the barber's skill.</p>
+          <p>Small scissors are used to refine the shape around the ears. Precision work shows the barber’s skill.</p>
           <span class="caption-location">Kampala, Uganda</span>
         </div>
       </section>
@@ -1978,7 +2086,7 @@
         </div>
       </section>
 
-      <!-- SLIDE 24: Deconstructing the Story -->
+      <!-- SLIDE 24: Deconstructing the Story (unchanged) -->
       <section class="deconstruct-slide">
         <h2 class="section-title">Deconstructing the Story</h2>
         <div class="acts-container">
@@ -1991,20 +2099,32 @@
         <div class="shot-breakdown"><span>Establishing</span><span>Portrait</span><span>Action</span><span>Detail</span><span>Closing</span></div>
       </section>
 
-      <!-- SLIDE 25: Photo Essay Structure (NEW) -->
+      <!-- SLIDE 25: BAD vs GOOD PHOTO ESSAY (NEW) -->
       <section class="list-slide">
-        <h2>Photo Essay Structure</h2>
-        <ul class="elegant-list">
-          <li><strong>Establishing Shot:</strong> Shows the location or environment.</li>
-          <li><strong>Characters:</strong> Introduces the people involved.</li>
-          <li><strong>The Process:</strong> Shows actions step by step.</li>
-          <li><strong>Details:</strong> Close‑up shots that add depth.</li>
-          <li><strong>Key Moment:</strong> The most important moment.</li>
-          <li><strong>Closing Image:</strong> Shows the result or transformation.</li>
-        </ul>
+        <h2>Bad vs Good Photo Essay</h2>
+        <div class="comparison-grid">
+          <div class="comparison-col bad">
+            <h3>❌ Weak Photo Essay</h3>
+            <ul>
+              <li>Random photos with no clear story</li>
+              <li>No sequence</li>
+              <li>No context</li>
+            </ul>
+            <div class="comparison-caption">“A collection of photos without a narrative.”</div>
+          </div>
+          <div class="comparison-col good">
+            <h3>✅ Strong Photo Essay</h3>
+            <ul>
+              <li>Clear beginning</li>
+              <li>Clear process</li>
+              <li>Clear ending</li>
+            </ul>
+            <div class="comparison-caption">“A sequence of images that guides the viewer through an experience.”</div>
+          </div>
+        </div>
       </section>
 
-      <!-- SLIDE 26: What Makes a Great Photo Essay? -->
+      <!-- SLIDE 26: What Makes a Great Photo Essay? (unchanged) -->
       <section class="list-slide">
         <h2>What Makes a Great Photo Essay?</h2>
         <ul class="elegant-list">
@@ -2016,7 +2136,7 @@
         </ul>
       </section>
 
-      <!-- SLIDE 27: Types of Photo Essays -->
+      <!-- SLIDE 27: Types of Photo Essays (unchanged) -->
       <section class="types-slide">
         <h2>Types of Photo Essays</h2>
         <div class="types-wall">
@@ -2028,7 +2148,7 @@
         </div>
       </section>
 
-      <!-- SLIDE 28: The Narrative Arc -->
+      <!-- SLIDE 28: The Narrative Arc (unchanged) -->
       <section class="arc-slide">
         <h2>The Narrative Arc</h2>
         <div class="arc-visual">
@@ -2044,17 +2164,31 @@
         </div>
       </section>
 
-      <!-- SLIDE 29: Caption Writing -->
+      <!-- SLIDE 29: PHOTO ESSAY STRUCTURE (NEW) -->
+      <section class="list-slide">
+        <h2>The Photo Essay Formula</h2>
+        <div class="structure-list">
+          <div class="structure-item"><span class="structure-number">1</span><div class="structure-content"><h4>Establishing Shot</h4><p>Shows the location or environment.</p></div></div>
+          <div class="structure-item"><span class="structure-number">2</span><div class="structure-content"><h4>Characters</h4><p>Introduces the people involved.</p></div></div>
+          <div class="structure-item"><span class="structure-number">3</span><div class="structure-content"><h4>The Process</h4><p>Shows actions step by step.</p></div></div>
+          <div class="structure-item"><span class="structure-number">4</span><div class="structure-content"><h4>Details</h4><p>Close‑up shots that add depth.</p></div></div>
+          <div class="structure-item"><span class="structure-number">5</span><div class="structure-content"><h4>Key Moment</h4><p>The most important action.</p></div></div>
+          <div class="structure-item"><span class="structure-number">6</span><div class="structure-content"><h4>Closing Image</h4><p>Shows the result or transformation.</p></div></div>
+        </div>
+      </section>
+
+      <!-- SLIDE 30: Caption Writing (improved) -->
       <section class="caption-masterclass">
         <h2>Caption Writing</h2>
         <div class="caption-comparison">
           <div class="bad-caption"><div class="caption-badge">✕ Poor</div><p>"A man getting a haircut"</p></div>
-          <div class="good-caption"><div class="caption-badge">✓ Excellent</div><p>"James receives his weekly haircut from Musa, who has been the neighborhood barber for 22 years. The ritual includes hot towel treatment and conversation about local news."</p></div>
+          <div class="good-caption"><div class="caption-badge">✓ Excellent</div><p>"A barber trims a client’s hair in a neighborhood barbershop in Kampala, Uganda."</p></div>
         </div>
+        <p style="margin:1rem 0;">Strong captions answer: <strong>What</strong> is happening, <strong>Why</strong> it matters, <strong>Where</strong> it is happening.</p>
         <div class="caption-formula"><span>WHO</span> + <span>WHAT</span> + <span>WHERE</span> + <span>WHEN</span> + <span>WHY</span> + <span>CONTEXT</span></div>
       </section>
 
-      <!-- SLIDE 30: Photography Techniques -->
+      <!-- SLIDE 31: Photography Techniques (improved) -->
       <section class="techniques-slide">
         <h2>Photography Techniques</h2>
         <div class="techniques-grid">
@@ -2062,23 +2196,24 @@
           <div class="technique"><div class="technique-icon">🔲</div><h3>Composition</h3><p>Rule of thirds, leading lines, framing</p></div>
           <div class="technique"><div class="technique-icon">📱</div><h3>Equipment</h3><p>Phone vs DSLR — both work</p></div>
         </div>
+        <p style="margin-top:1rem; color:var(--wla-teal);">Include wide shots, medium shots, close‑ups, and detail shots for variety.</p>
       </section>
 
-      <!-- SLIDE 31: Ethics & Permission -->
+      <!-- SLIDE 32: Ethics & Permission (unchanged) -->
       <section class="ethics-slide">
         <div class="ethics-banner">⚡ ALWAYS ASK PERMISSION ⚡</div>
         <div class="ethics-speech">“I'm documenting this ritual for Wikimedia Commons, a free educational archive. May I photograph and share this with proper credit?”</div>
         <div class="ethics-note">Some moments aren't for photographing. Respect that.</div>
       </section>
 
-      <!-- SLIDE 32: Welcome to Commons -->
+      <!-- SLIDE 33: Welcome to Commons (unchanged) -->
       <section class="commons-intro">
         <h2>Wikimedia Commons</h2>
         <div class="commons-stat">80+ million free media files</div>
         <p class="commons-license">CC-BY-SA · Your photos will educate the world</p>
       </section>
 
-      <!-- SLIDE 33: File Naming -->
+      <!-- SLIDE 34: File Naming (unchanged) -->
       <section class="naming-slide">
         <h2>File Naming is Critical</h2>
         <div class="naming-correct"><div class="naming-label">✓ CORRECT</div><code>"Ritual_Uganda_01.jpg"</code><code>"Ritual_Uganda_02.jpg"</code><code>"Ritual_Uganda_03.jpg"</code></div>
@@ -2086,23 +2221,24 @@
         <div class="naming-highlight">NUMBER YOUR PHOTOS IN ORDER</div>
       </section>
 
-      <!-- SLIDE 34: File Requirements -->
+      <!-- SLIDE 35: File Requirements (unchanged) -->
       <section class="requirements-slide">
         <h2>File Requirements</h2>
         <ul><li>📷 Format: JPG or GIF only</li><li>⚖️ Minimum 2MB, clear and focused</li><li>🚫 No watermarks or logos</li><li>📊 Keep camera metadata intact</li></ul>
       </section>
 
-      <!-- SLIDE 35: Step 1 - Create Account -->
+      <!-- SLIDE 36: Step 1 - Create Account -->
       <section class="tutorial-step">
         <h2>Step 1: Create Account</h2>
         <div class="step-visual">
           <div class="step-highlight">commons.wikimedia.org</div>
           <div class="step-button">Create account</div>
           <div class="screenshot-placeholder">[ SCREENSHOT: Create account page ]</div>
+          <p class="step-note">During the live demo, we will fill these fields together.</p>
         </div>
       </section>
 
-      <!-- SLIDE 36: Step 2 - Upload Wizard -->
+      <!-- SLIDE 37: Step 2 - Upload Wizard -->
       <section class="tutorial-step">
         <h2>Step 2: Upload Wizard</h2>
         <div class="step-visual">
@@ -2112,7 +2248,7 @@
         </div>
       </section>
 
-      <!-- SLIDE 37: Step 3 - Add Descriptions -->
+      <!-- SLIDE 38: Step 3 - Add Descriptions -->
       <section class="tutorial-step">
         <h2>Step 3: Add Descriptions</h2>
         <div class="step-visual">
@@ -2124,7 +2260,7 @@
         </div>
       </section>
 
-      <!-- SLIDE 38: Step 4 - Create Your Photo Essay -->
+      <!-- SLIDE 39: Step 4 - Create Your Photo Essay -->
       <section class="organize-slide">
         <h2>Step 4: Create Your Photo Essay</h2>
         <div class="options-grid">
@@ -2142,7 +2278,7 @@
         <div class="screenshot-placeholder" style="max-width: 600px; margin: 2rem auto 0;">[ SCREENSHOT: Photo essay creation interface ]</div>
       </section>
 
-      <!-- SLIDE 39: Real Examples from Commons -->
+      <!-- SLIDE 40: Real Examples from Commons (unchanged) -->
       <section class="examples-slide">
         <h2>Real Examples from Commons</h2>
         <div class="examples-showcase">
@@ -2152,28 +2288,28 @@
         <div class="example-highlights"><span>📸 5-15 photos</span><span>📝 Captions</span><span>🏷️ Sequential</span></div>
       </section>
 
-      <!-- SLIDE 40: Contest Timeline -->
+      <!-- SLIDE 41: Contest Timeline (unchanged) -->
       <section class="timeline-slide"><h2>Contest Timeline</h2><div class="timeline-bar"><div class="timeline-marker"><span class="marker-date">March 1, 2026</span></div><div class="timeline-line"></div><div class="timeline-marker"><span class="marker-date">April 30, 2026</span></div></div><p class="timeline-note">Submit your photo essay before midnight UTC</p></section>
 
-      <!-- SLIDE 41: Prizes -->
+      <!-- SLIDE 42: Prizes (unchanged) -->
       <section class="prizes-slide"><h2>2026 Prizes</h2><div class="prizes"><div class="prize-category"><h3>Photography</h3><div>1st: <span>USD 900</span></div><div>2nd: <span>USD 700</span></div><div>3rd: <span>USD 600</span></div><div>Regional: <span>USD 1,000</span></div></div><div class="prize-category"><h3>Media</h3><div>Photo Essays: <span>USD 300</span></div><div>Best Audio: <span>USD 700</span></div><div>Narrative Video: <span>USD 900</span></div><div>Reportage Video: <span>USD 900</span></div><div>Clip Video: <span>USD 200</span></div></div></div></section>
 
-      <!-- SLIDE 42: Judging Criteria -->
-      <section class="criteria-slide"><h2>Judging Criteria</h2><div class="criteria"><div>Technical Quality <span>20%</span></div><div>Storytelling <span>30%</span></div><div>Cultural Significance <span>25%</span></div><div>Caption Quality <span>15%</span></div><div>Theme Adherence <span>10%</span></div></div><p class="criteria-note">Photo essays judged as a complete narrative</p></section>
+      <!-- SLIDE 43: Judging Criteria (improved) -->
+      <section class="criteria-slide"><h2>Judging Criteria</h2><div class="criteria"><div>Technical Quality <span>20%</span></div><div>Storytelling <span>30%</span></div><div>Cultural Significance <span>25%</span></div><div>Caption Quality <span>15%</span></div><div>Theme Adherence <span>10%</span></div></div><p class="criteria-note">Judges look for clear story, strong sequence, cultural meaning, good captions, and visual variety.</p></section>
 
-      <!-- SLIDE 43: Your Mission -->
+      <!-- SLIDE 44: Your Mission (unchanged) -->
       <section class="mission-slide"><h2>Your Mission</h2><div class="mission"><div>📸 5-12 photos minimum</div><div>📝 Captions for EACH photo</div><div>🏷️ Sequential naming</div><div>📤 Upload to Commons</div><div>🔗 Create essay via direct link</div></div><div class="deadline">Deadline: April 30, 2026</div></section>
 
-      <!-- SLIDE 44: Uganda Resources -->
+      <!-- SLIDE 45: Uganda Resources (unchanged) -->
       <section class="resources-slide"><h2>Uganda Resources</h2><div class="resources"><div>📱 Telegram Group</div><div>📧 alvinategyeka@gmail.com</div><div>🌍 Imbalu, Weddings, Funerals</div><div>🎥 Next Workshop: March 15</div></div><p class="contact">Join the Uganda WLA community!</p></section>
 
-      <!-- SLIDE 45: Q&A -->
+      <!-- SLIDE 46: Q&A (unchanged) -->
       <section class="qa-slide"><div class="qa-icon">?</div><h2>Questions?</h2><div class="qa-contact">alvinategyeka@gmail.com</div><div class="qa-hashtags">#WikiLovesAfrica #RitesAndRituals #Uganda</div></section>
 
-      <!-- SLIDE 46: Thank You -->
+      <!-- SLIDE 47: Thank You (unchanged) -->
       <section class="thankyou-slide"><h1 class="thankyou-title">Asante Sana</h1><p class="thankyou-message">Your stories preserve our culture</p><div class="thankyou-divider"></div><p class="thankyou-call">Now go tell your story</p></section>
 
-      <!-- SLIDE 47: FINAL RESOURCES - ALL LINKS -->
+      <!-- SLIDE 48: FINAL RESOURCES (unchanged) -->
       <section class="final-resources-slide">
         <h2 class="final-resources-title">Key Resources</h2>
         <div class="final-resources-grid">
@@ -2209,6 +2345,33 @@
           </div>
         </div>
         <p class="contact" style="margin-top:2rem;">#WikiLovesAfrica #RitesAndRituals</p>
+      </section>
+
+      <!-- SLIDE 49: HOW JUDGES LOOK (NEW) -->
+      <section class="list-slide">
+        <h2>What Makes a Winning Photo Essay</h2>
+        <div class="judges-list">
+          <div class="judge-item"><div class="emoji">📷</div><h4>Clear Story</h4><p>The images show a process or transformation.</p></div>
+          <div class="judge-item"><div class="emoji">🔢</div><h4>Strong Sequence</h4><p>Photos follow a logical order.</p></div>
+          <div class="judge-item"><div class="emoji">🌍</div><h4>Cultural Meaning</h4><p>The essay explains a cultural practice or ritual.</p></div>
+          <div class="judge-item"><div class="emoji">📝</div><h4>Good Captions</h4><p>Captions add information and context.</p></div>
+          <div class="judge-item"><div class="emoji">🖼️</div><h4>Visual Variety</h4><p>Wide shots, close‑ups, details, and moments.</p></div>
+        </div>
+      </section>
+
+      <!-- SLIDE 50: YOUR TURN (NEW) -->
+      <section class="thankyou-slide">
+        <h2 class="final-resources-title" style="margin-bottom:2rem;">Your Turn</h2>
+        <p style="font-size:2rem; color:var(--wla-charcoal);">What rite or ritual in your community could become a powerful photo essay?</p>
+        <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:1rem; margin:3rem 0;">
+          <span style="background:rgba(241,97,96,0.1); padding:0.5rem 1.5rem; border-radius:30px;">Cooking for a wedding</span>
+          <span style="background:rgba(241,97,96,0.1); padding:0.5rem 1.5rem; border-radius:30px;">Preparing for Friday prayers</span>
+          <span style="background:rgba(241,97,96,0.1); padding:0.5rem 1.5rem; border-radius:30px;">A mechanic repairing a boda boda</span>
+          <span style="background:rgba(241,97,96,0.1); padding:0.5rem 1.5rem; border-radius:30px;">Farmers harvesting crops</span>
+          <span style="background:rgba(241,97,96,0.1); padding:0.5rem 1.5rem; border-radius:30px;">A barber shop morning routine</span>
+        </div>
+        <p style="font-size:1.5rem; font-style:italic; color:var(--wla-teal);">Great photo essays are not found. They are observed carefully.</p>
+        <div class="thankyou-divider" style="margin:2rem auto;"></div>
       </section>
     </div>
   </div>
@@ -2481,7 +2644,7 @@
       // Slide animations
       Reveal.addEventListener('slidechanged', function(e) {
         const slide = e.currentSlide;
-        const els = slide.querySelectorAll('h1, h2, h3, p, .meta-item, .gallery-item, .minimal-card, .technique, .act, .theme-circle, .film-frame, .story-caption, .quote-text, .impact-number, .connection-item, .screenshot-placeholder, .final-resource-card');
+        const els = slide.querySelectorAll('h1, h2, h3, p, .meta-item, .gallery-item, .minimal-card, .technique, .act, .theme-circle, .film-frame, .story-caption, .quote-text, .impact-number, .connection-item, .screenshot-placeholder, .final-resource-card, .judge-item, .structure-item');
         els.forEach((el, i) => {
           el.style.opacity = '0';
           el.style.transform = 'translateY(20px)';
@@ -2493,7 +2656,7 @@
         });
       });
 
-      console.log('%c🎬 WLA 2026 - Improved Content', 'color:#f16160;font-size:16px;');
+      console.log('%c🎬 WLA 2026 - Final Master Version', 'color:#f16160;font-size:16px;');
       showNotification('Welcome to the session!', '👋');
     })();
   </script>
