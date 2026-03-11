@@ -327,14 +327,15 @@
       background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.03"><path d="M10,10 Q30,10 30,30 T50,30" stroke="%23f16160" fill="none"/></svg>');
     }
 
-    /* ========== COVER SLIDE (REDESIGNED) ========== */
+    /* ========== COVER SLIDE (with pattern background) ========== */
     .cover-slide {
       position: relative;
       height: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: white;  /* You can replace this with a pattern image later */
+      background-size: cover;
+      background-position: center;
     }
     .cover-content {
       position: relative;
@@ -428,7 +429,6 @@
       padding-top: 1rem;
       margin-top: 1rem;
     }
-    /* Placeholder for background pattern – you can upload a pattern image later */
 
     /* ========== CINEMATIC QUOTE (SLIDE 2 FIXED) ========== */
     .cinematic-quote {
@@ -1604,10 +1604,11 @@
   <!-- Reveal Slides -->
   <div class="reveal">
     <div class="slides">
-      <!-- SLIDE 1: COVER (REDESIGNED) -->
-      <section class="cover-slide" data-background-color="#ffffff" data-transition="zoom">
-        <!-- You can replace the white background with a pattern image later, e.g., data-background="images/patterns/cover-pattern.jpg" -->
-        <div class="cover-content">
+      <!-- SLIDE 1: COVER (with pattern background) -->
+      <section class="cover-slide" data-background="images/patterns/cover-pattern.jpg" data-background-color="#ffffff" data-transition="zoom">
+        <!-- semi-transparent overlay for readability -->
+        <div style="position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(255,255,255,0.85); z-index:1;"></div>
+        <div class="cover-content" style="position:relative; z-index:2;">
           <div class="cover-left">
             <div class="portrait-frame">
               <img src="images/trainer/alvin-portrait.jpg" alt="Alvin Ategyeka"
