@@ -327,7 +327,7 @@
       background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.03"><path d="M10,10 Q30,10 30,30 T50,30" stroke="%23f16160" fill="none"/></svg>');
     }
 
-    /* ========== COVER SLIDE (REDESIGNED: NO TEAL, WHITE & YELLOW ONLY) ========== */
+    /* ========== COVER SLIDE (REDESIGNED) ========== */
     .cover-slide {
       position: relative;
       height: 100%;
@@ -339,10 +339,10 @@
     .cover-content {
       position: relative;
       z-index: 2;
-      max-width: 1200px;
+      max-width: 1300px;
       width: 90%;
       display: grid;
-      grid-template-columns: 1fr 1.5fr;
+      grid-template-columns: 0.8fr 1.2fr;
       gap: 2rem;
       align-items: center;
     }
@@ -351,103 +351,85 @@
       flex-direction: column;
       align-items: center;
       justify-content: flex-end;
-      height: 100%;
     }
-    .portrait-glow {
-      position: relative;
+    .portrait-frame {
       width: 100%;
-      max-width: 300px; /* smaller */
-      margin: 0 auto 1rem;
+      max-width: 280px; /* smaller */
+      margin-bottom: 1rem;
     }
-    .portrait-glow img {
+    .portrait-frame img {
       width: 100%;
       height: auto;
       border-radius: 50%;
       border: 4px solid var(--wla-yellow);
       box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      transition: transform 0.5s ease;
-    }
-    .portrait-glow img:hover {
-      transform: scale(1.02);
     }
     .cover-caption {
       font-size: 1rem;
       letter-spacing: 2px;
       color: var(--wla-coral);
       text-transform: uppercase;
-      text-align: center;
     }
     .cover-right {
-      padding: 2rem;
-      background: white;
+      padding: 1rem 0;
     }
     .cover-event {
-      font-size: 1.2rem;
+      font-size: 1rem;
       color: var(--wla-coral);
       letter-spacing: 4px;
       text-transform: uppercase;
       margin-bottom: 0.5rem;
     }
     .cover-title {
-      font-size: 4.5rem;
+      font-size: 4rem;
       line-height: 1.1;
       font-weight: 700;
       color: var(--wla-charcoal);
       text-transform: uppercase;
       margin-bottom: 1rem;
     }
-    .cover-theme-block {
-      margin: 1.5rem 0;
-    }
-    .cover-theme-title {
-      font-size: 1.2rem;
-      color: var(--wla-coral);
-      text-transform: uppercase;
-      letter-spacing: 2px;
+    .cover-title span {
+      color: var(--wla-yellow);
+      font-style: italic;
     }
     .cover-theme {
-      font-size: 3rem;
+      font-size: 2rem;
       font-family: var(--font-serif);
       font-style: italic;
-      color: var(--wla-yellow);
-      margin-bottom: 0.5rem;
-      border-left: 3px solid var(--wla-coral);
+      color: var(--wla-teal);
+      margin-bottom: 1rem;
+      border-left: 4px solid var(--wla-coral);
       padding-left: 1rem;
     }
-    .cover-theme-desc {
-      font-size: 1.2rem;
+    .cover-trainer {
+      margin: 1.5rem 0;
+    }
+    .cover-trainer .label {
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      color: var(--wla-coral);
+      text-transform: uppercase;
+    }
+    .cover-trainer .name {
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--wla-charcoal);
+      line-height: 1.2;
+    }
+    .cover-trainer .title {
+      font-size: 0.9rem;
+      color: var(--wla-teal);
+    }
+    .cover-value {
+      font-size: 0.9rem;
       color: var(--wla-charcoal);
       opacity: 0.8;
-    }
-    .cover-trainer {
-      margin: 2rem 0;
-    }
-    .cover-trainer p {
-      font-size: 0.9rem;
-      letter-spacing: 3px;
-      color: var(--wla-coral);
-      margin-bottom: 0.2rem;
-    }
-    .cover-trainer h3 {
-      font-size: 2.5rem;
-      color: var(--wla-charcoal);
-      margin: 0.2rem 0;
-    }
-    .cover-trainer span {
-      font-size: 1rem;
-      color: var(--wla-yellow);
-    }
-    .cover-session-value {
-      font-size: 1rem;
-      color: var(--wla-charcoal);
-      margin: 2rem 0 1rem;
-      font-style: italic;
       border-top: 1px solid rgba(241,97,96,0.3);
       padding-top: 1rem;
+      margin-top: 1rem;
     }
-    /* No tags on cover */
 
-    /* ========== CINEMATIC QUOTE ========== */
+    /* ========== CINEMATIC QUOTE (SLIDE 2 FIXED) ========== */
     .cinematic-quote {
       display: flex;
       flex-direction: column;
@@ -456,49 +438,21 @@
       text-align: center;
       background-size: cover;
       background-position: center;
-    }
-    .quote-container { position: relative; max-width: 1000px; }
-    .quote-mark {
-      font-size: 10rem;
-      color: var(--wla-coral);
-      opacity: 0.2;
-      font-family: var(--font-serif);
-      line-height: 0.5;
-    }
-    .quote-mark.left { text-align: left; }
-    .quote-mark.right { text-align: right; margin-top: -2rem; }
-    .quote-text {
-      font-size: 3.5rem;
-      font-family: var(--font-serif);
-      color: var(--wla-charcoal);
       position: relative;
-      z-index: 2;
     }
-    body.dark-mode .quote-text {
-      color: var(--wla-yellow);
+    .cinematic-quote .quote-overlay {
+      background: rgba(0,0,0,0.5);
+      padding: 2rem 3rem;
+      border-radius: 8px;
+      max-width: 800px;
+      margin: 2rem;
     }
-    .global-impact { margin: 2rem 0; }
-    .impact-number {
-      font-size: 6rem;
+    .cinematic-quote .quote-overlay p {
+      font-size: 2.5rem;
       font-family: var(--font-serif);
-      color: var(--wla-yellow);
-      line-height: 1;
-    }
-    .impact-label {
-      font-size: 1.2rem;
-      color: var(--wla-teal);
-      letter-spacing: 2px;
-    }
-    .legacy-bar {
-      display: flex;
-      gap: 1rem;
-      color: var(--wla-charcoal);
-      opacity: 0.6;
-      font-size: 0.9rem;
-      letter-spacing: 2px;
-    }
-    body.dark-mode .legacy-bar {
       color: white;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+      line-height: 1.3;
     }
 
     /* ========== SPLIT ARTISTIC ========== */
@@ -671,8 +625,6 @@
       margin-top: 2rem;
     }
 
-    /* ========== GALLERY WALL ========== (removed) */
-
     /* ========== OBJECTIVES ========== */
     .objectives-minimal { padding: 2rem; }
     .minimal-title { text-align: center; margin-bottom: 2rem; color: var(--wla-charcoal); }
@@ -762,7 +714,7 @@
       font-style: italic;
     }
 
-    /* ========== CINEMATIC PORTRAIT (simpler) ========== */
+    /* ========== CINEMATIC PORTRAIT (FIXED: NO OVERLAY) ========== */
     .cinematic-portrait {
       position: relative;
       height: 100%;
@@ -779,6 +731,7 @@
       border-left: 4px solid var(--wla-coral);
       max-width: 600px;
       color: var(--wla-charcoal);
+      border-radius: 0 8px 8px 0;
     }
     body.dark-mode .cinematic-portrait .quote-box {
       background: rgba(30,30,30,0.9);
@@ -847,7 +800,7 @@
       font-size: 1.1rem;
     }
 
-    /* ========== STORY SLIDES (REDESIGNED: NO BACKGROUND, CLEAR CAPTIONS) ========== */
+    /* ========== STORY SLIDES ========== */
     .story-slide {
       display: flex;
       flex-direction: column;
@@ -868,7 +821,7 @@
       width: 100%;
       height: auto;
       display: block;
-      object-fit: contain; /* ensures full image visible, no crop */
+      object-fit: contain;
       max-height: 60vh;
     }
     .story-caption-box {
@@ -1123,7 +1076,7 @@
       left: 0;
     }
 
-    /* ========== TUTORIAL STEPS ========== */
+    /* ========== TUTORIAL STEPS (with screenshot placeholders) ========== */
     .tutorial-step { padding: 2rem; text-align: center; }
     .step-visual {
       background: rgba(255,255,255,0.02);
@@ -1316,7 +1269,6 @@
       color: var(--wla-yellow);
       margin: 1rem 0;
     }
-    /* no hashtags */
 
     /* ========== THANK YOU ========== */
     .thankyou-slide {
@@ -1350,7 +1302,7 @@
       font-style: italic;
     }
 
-    /* ========== FINAL RESOURCES SLIDE (5 resources, no telegram) ========== */
+    /* ========== FINAL RESOURCES SLIDE (5 cards) ========== */
     .final-resources-slide {
       padding: 2rem;
       text-align: center;
@@ -1433,8 +1385,8 @@
     /* ========== RESPONSIVE ========== */
     @media (max-width: 1024px) {
       .cover-content { grid-template-columns: 1fr; text-align: center; }
-      .portrait-glow { margin: 0 auto; }
-      .cover-right { border-left: none; padding-left: 0; }
+      .portrait-frame { margin: 0 auto; }
+      .cover-right { text-align: center; }
       .cover-theme { border-left: none; }
       .theme-circles { flex-wrap: wrap; }
       .connection-grid { grid-template-columns: 1fr; gap: 1rem; }
@@ -1448,9 +1400,9 @@
 
     @media (max-width: 480px) {
       .reveal h2 { font-size: 2.5rem; }
-      .cover-title { font-size: 3rem; }
-      .cover-theme { font-size: 2rem; }
-      .cover-trainer h3 { font-size: 1.8rem; }
+      .cover-title { font-size: 2.5rem; }
+      .cover-theme { font-size: 1.5rem; }
+      .cover-trainer .name { font-size: 1.5rem; }
       .typographic-word { font-size: 4rem; }
       .quote-text { font-size: 2rem; }
       .impact-number { font-size: 4rem; }
@@ -1626,7 +1578,7 @@
   <!-- Progress -->
   <div class="progress-container">
     <div class="progress-track"><div class="progress-fill" id="progressBar"></div></div>
-    <div class="progress-counter" id="slideCounter">01 / 48</div> <!-- updated total -->
+    <div class="progress-counter" id="slideCounter">01 / 48</div>
   </div>
 
   <!-- Help Overlay -->
@@ -1649,11 +1601,11 @@
   <!-- Reveal Slides -->
   <div class="reveal">
     <div class="slides">
-      <!-- SLIDE 1: COVER (REDESIGNED, NO TEAL) -->
+      <!-- SLIDE 1: COVER (REDESIGNED) -->
       <section class="cover-slide" data-background-color="#ffffff" data-transition="zoom">
         <div class="cover-content">
           <div class="cover-left">
-            <div class="portrait-glow">
+            <div class="portrait-frame">
               <img src="images/trainer/alvin-portrait.jpg" alt="Alvin Ategyeka"
                    onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%20viewBox%3D%220%200%20400%20400%22%3E%3Ccircle%20cx%3D%22200%22%20cy%3D%22200%22%20r%3D%22190%22%20fill%3D%22%23f16160%22%20stroke%3D%22%2308ad9d%22%20stroke-width%3D%224%22%2F%3E%3Ctext%20x%3D%22200%22%20y%3D%22220%22%20text-anchor%3D%22middle%22%20fill%3D%22white%22%20font-family%3D%22Montserrat%22%20font-size%3D%2230%22%3EYOUR%20PHOTO%3C%2Ftext%3E%3C%2Fsvg%3E'">
             </div>
@@ -1661,32 +1613,28 @@
           </div>
           <div class="cover-right">
             <div class="cover-event">Wiki Loves Africa 2026</div>
-            <h1 class="cover-title">CREATING<br>POWERFUL<br>PHOTO ESSAYS</h1>
-            <div class="cover-theme-block">
-              <div class="cover-theme-title">2026 Theme</div>
-              <div class="cover-theme">Rites & Rituals</div>
-              <div class="cover-theme-desc">Documenting Cultural Practices Through Photography</div>
-            </div>
+            <h1 class="cover-title">CREATING<br>POWERFUL<br><span>PHOTO ESSAYS</span></h1>
+            <div class="cover-theme">Rites & Rituals</div>
             <div class="cover-trainer">
-              <p>Training by</p>
-              <h3>ALVIN ATEGYEKA</h3>
-              <span>Wikimedia Contributor · Wiki Loves Africa Ambassador</span>
+              <div class="label">Training by</div>
+              <div class="name">ALVIN ATEGYEKA</div>
+              <div class="title">Wikimedia Contributor · Wiki Loves Africa Ambassador</div>
             </div>
-            <div class="cover-session-value">
-              Learn how to plan, photograph, caption, and publish a compelling photo essay on Wikimedia Commons.
+            <div class="cover-value">
+              Plan, photograph, caption, and publish a compelling photo essay on Wikimedia Commons.
             </div>
           </div>
         </div>
       </section>
 
-      <!-- SLIDE 2: VISUAL SHOCK (with pattern) -->
+      <!-- SLIDE 2: VISUAL SHOCK (with pattern and visible text) -->
       <section class="cinematic-quote" data-background="images/patterns/african-texture.jpg" data-background-opacity="0.8">
-        <div style="position: absolute; bottom: 50px; left: 0; right: 0; text-align: center; color: white; font-size: 2rem; font-family: var(--font-serif); text-shadow: 2px 2px 10px rgba(0,0,0,0.5); background: rgba(0,0,0,0.3); padding: 1rem;">
-          Every culture has rituals. Some we celebrate. Some we never notice.
+        <div class="quote-overlay">
+          <p>Every culture has rituals.<br>Some we celebrate. Some we never notice.</p>
         </div>
       </section>
 
-      <!-- SLIDE 3: What is a Photo Essay? (improved) -->
+      <!-- SLIDE 3: What is a Photo Essay? -->
       <section class="split-artistic pattern-subtle">
         <div class="artistic-grid">
           <div class="definition-panel">
@@ -1774,7 +1722,7 @@
         <p class="connection-note">By photographing rituals, you explain the meaning of rites.</p>
       </section>
 
-      <!-- SLIDE 9: Community Voices (simpler quote, no overlay) -->
+      <!-- SLIDE 9: Community Voices (no overlay, background visible) -->
       <section class="cinematic-portrait" data-background="images/portraits/elder.jpg" data-background-opacity="1">
         <div class="quote-box">
           <blockquote>The barber shop is a place of stories.</blockquote>
@@ -1798,7 +1746,7 @@
         </div>
       </section>
 
-      <!-- SLIDES 11-22: Barber Story (12 slides) - REDESIGNED WITH VISIBLE CAPTIONS -->
+      <!-- SLIDES 11-22: Barber Story (12 slides) -->
       <section class="story-slide">
         <div class="story-image-container">
           <img src="images/barber-story/01-establishing.jpg" alt="Barber shop exterior" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22600%22%20viewBox%3D%220%200%20800%20600%22%3E%3Crect%20width%3D%22800%22%20height%3D%22600%22%20fill%3D%22%23f16160%22%2F%3E%3Ctext%20x%3D%22300%22%20y%3D%22300%22%20fill%3D%22white%22%20font-family%3D%22Montserrat%22%20font-size%3D%2230%22%3EImage%201%3C%2Ftext%3E%3C%2Fsvg%3E'">
@@ -1932,7 +1880,7 @@
         </div>
       </section>
 
-      <!-- SLIDE 23: Deconstructing the Story (unchanged) -->
+      <!-- SLIDE 23: Deconstructing the Story -->
       <section class="deconstruct-slide">
         <h2 class="section-title">Deconstructing the Story</h2>
         <div class="acts-container">
@@ -1945,7 +1893,7 @@
         <div class="shot-breakdown"><span>Establishing</span><span>Portrait</span><span>Action</span><span>Detail</span><span>Closing</span></div>
       </section>
 
-      <!-- SLIDE 24: BAD vs GOOD PHOTO ESSAY -->
+      <!-- SLIDE 24: Bad vs Good Photo Essay -->
       <section class="list-slide">
         <h2>Bad vs Good Photo Essay</h2>
         <div class="comparison-grid">
@@ -1970,7 +1918,7 @@
         </div>
       </section>
 
-      <!-- SLIDE 25: What Makes a Great Photo Essay? (unchanged) -->
+      <!-- SLIDE 25: What Makes a Great Photo Essay? -->
       <section class="list-slide">
         <h2>What Makes a Great Photo Essay?</h2>
         <ul class="elegant-list">
@@ -1982,7 +1930,7 @@
         </ul>
       </section>
 
-      <!-- SLIDE 26: The Narrative Arc (unchanged) -->
+      <!-- SLIDE 26: The Narrative Arc -->
       <section class="arc-slide">
         <h2>The Narrative Arc</h2>
         <div class="arc-visual">
@@ -1998,7 +1946,7 @@
         </div>
       </section>
 
-      <!-- SLIDE 27: PHOTO ESSAY STRUCTURE -->
+      <!-- SLIDE 27: Photo Essay Structure -->
       <section class="list-slide">
         <h2>The Photo Essay Formula</h2>
         <div class="structure-list">
@@ -2029,7 +1977,7 @@
         <div class="ethics-note">Some moments aren't for photographing. Respect that.</div>
       </section>
 
-      <!-- SLIDE 30: Naming -->
+      <!-- SLIDE 30: File Naming -->
       <section class="naming-slide">
         <h2>File Naming is Critical</h2>
         <div class="naming-correct"><div class="naming-label">✓ CORRECT</div><code>"Ritual_Uganda_01.jpg"</code><code>"Ritual_Uganda_02.jpg"</code><code>"Ritual_Uganda_03.jpg"</code></div>
@@ -2076,7 +2024,7 @@
         </div>
       </section>
 
-      <!-- SLIDE 35: Step 4 - Create Your Photo Essay -->
+      <!-- SLIDE 35: Step 4 - Create Your Photo Essay (updated links) -->
       <section class="organize-slide">
         <h2>Step 4: Create Your Photo Essay</h2>
         <div class="options-grid">
@@ -2087,7 +2035,8 @@
           </div>
           <div class="option-card">
             <h3>Option B: From Main Contest Page</h3>
-            <p>On the main page, look for "click here" under photo essay – as of early March, the link may not be active yet. Use the direct link above.</p>
+            <p>On the main contest page, look for the "photo essay" section and click the link. You can also use the direct link above.</p>
+            <a href="https://commons.wikimedia.org/wiki/Commons:Wiki_Loves_Africa_2026" target="_blank" class="step-button" style="display: inline-block; margin-top: 1rem;">VISIT MAIN CONTEST PAGE</a>
           </div>
         </div>
         <div class="important-note">All photos must be uploaded INDIVIDUALLY first</div>
@@ -2122,7 +2071,7 @@
       <!-- SLIDE 42: Thank You -->
       <section class="thankyou-slide"><h1 class="thankyou-title">Asante Sana</h1><p class="thankyou-message">Your stories preserve our culture</p><div class="thankyou-divider"></div><p class="thankyou-call">Now go tell your story</p></section>
 
-      <!-- SLIDE 43: FINAL RESOURCES (5 cards, no telegram) -->
+      <!-- SLIDE 43: FINAL RESOURCES (5 cards) -->
       <section class="final-resources-slide">
         <h2 class="final-resources-title">Key Resources</h2>
         <div class="final-resources-grid">
@@ -2155,7 +2104,7 @@
         <p class="contact" style="margin-top:2rem;">#WikiLovesAfrica #RitesAndRituals</p>
       </section>
 
-      <!-- SLIDE 44: HOW JUDGES LOOK -->
+      <!-- SLIDE 44: How Judges Look -->
       <section class="list-slide">
         <h2>What Makes a Winning Photo Essay</h2>
         <div class="judges-list">
@@ -2167,7 +2116,7 @@
         </div>
       </section>
 
-      <!-- SLIDE 45: YOUR TURN -->
+      <!-- SLIDE 45: Your Turn -->
       <section class="thankyou-slide">
         <h2 class="final-resources-title" style="margin-bottom:2rem;">Your Turn</h2>
         <p style="font-size:2rem; color:var(--wla-charcoal);">What rite or ritual in your community could become a powerful photo essay?</p>
@@ -2210,11 +2159,10 @@
       const nextBtn = document.getElementById('nextSlide');
 
       let audioEnabled = false;
-      let lightMode = true; // start in light mode (matches body class)
+      let lightMode = true;
       let particles = [];
       let mouseX = 0, mouseY = 0;
 
-      // Toggle theme function (used by button and keyboard)
       function toggleTheme() {
         lightMode = !lightMode;
         if (lightMode) {
@@ -2227,7 +2175,6 @@
         showNotification(lightMode ? 'Light mode' : 'Dark mode', lightMode ? '☀️' : '🌙');
       }
 
-      // Particle system
       function initParticles() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
@@ -2285,7 +2232,6 @@
         mouseY = e.clientY;
       });
 
-      // Reveal initialization
       Reveal.initialize({
         hash: true,
         slideNumber: false,
@@ -2309,7 +2255,6 @@
         }
       });
 
-      // Preloader
       window.addEventListener('load', () => {
         initParticles();
         setTimeout(() => {
@@ -2318,7 +2263,6 @@
         }, 2000);
       });
 
-      // Progress
       function updateProgress() {
         const indices = Reveal.getIndices();
         const total = Reveal.getTotalSlides();
@@ -2358,7 +2302,6 @@
         });
       }
 
-      // Audio
       function toggleAudio() {
         audioEnabled = !audioEnabled;
         if (audioEnabled) {
@@ -2376,11 +2319,8 @@
         }
       }
       audioControl.addEventListener('click', toggleAudio);
-
-      // Theme toggle (already defined)
       themeControl.addEventListener('click', toggleTheme);
 
-      // Notification
       function showNotification(msg, icon) {
         const notif = document.createElement('div');
         notif.className = 'cinematic-notification';
@@ -2393,7 +2333,6 @@
         }, 2000);
       }
 
-      // Help
       function toggleHelp() { helpOverlay.classList.toggle('active'); }
       helpControl.addEventListener('click', toggleHelp);
       closeHelp.addEventListener('click', () => helpOverlay.classList.remove('active'));
@@ -2401,7 +2340,6 @@
         if (e.key === 'Escape' && helpOverlay.classList.contains('active')) helpOverlay.classList.remove('active');
       });
 
-      // Magnetic buttons (optional)
       document.querySelectorAll('.control-btn').forEach(btn => {
         btn.addEventListener('mousemove', (e) => {
           const rect = btn.getBoundingClientRect();
@@ -2418,7 +2356,6 @@
         btn.addEventListener('mouseleave', () => btn.style.transform = '');
       });
 
-      // Auto-hide controls (only the right panel, not mobile nav)
       let inactivityTimer;
       const controls = document.querySelector('.control-panel');
       function resetTimer() {
@@ -2433,7 +2370,6 @@
       document.addEventListener('click', resetTimer);
       resetTimer();
 
-      // Fullscreen
       document.addEventListener('keydown', (e) => {
         if (e.key === 'f' || e.key === 'F') {
           if (!document.fullscreenElement) document.documentElement.requestFullscreen();
@@ -2442,14 +2378,10 @@
         if (e.key === '0') Reveal.slide(0);
       });
 
-      // Back to top
       backToTop.addEventListener('click', () => Reveal.slide(0));
-
-      // Mobile navigation buttons
       prevBtn.addEventListener('click', () => Reveal.prev());
       nextBtn.addEventListener('click', () => Reveal.next());
 
-      // Slide animations
       Reveal.addEventListener('slidechanged', function(e) {
         const slide = e.currentSlide;
         const els = slide.querySelectorAll('h1, h2, h3, p, .meta-item, .gallery-item, .minimal-card, .technique, .act, .theme-circle, .film-frame, .story-caption-box, .quote-text, .impact-number, .connection-item, .screenshot-placeholder, .final-resource-card, .judge-item, .structure-item');
